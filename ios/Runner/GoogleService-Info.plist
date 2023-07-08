@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>629602019077-ng30bvh5ntvj6pe6fmrvvarcer543jea.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.629602019077-ng30bvh5ntvj6pe6fmrvvarcer543jea</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>629602019077-kdt0fsrqv1822l404dn4l7b7k077id6u.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBN9aKqptNWbTK1ExmpjtNeAOszlw1xlTk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>629602019077</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.rmd.learn.elearning</string>
+	<key>PROJECT_ID</key>
+	<string>e-learning-guinea</string>
+	<key>STORAGE_BUCKET</key>
+	<string>e-learning-guinea.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:629602019077:ios:46cc1c6402980e9d2a796c</string>
+</dict>
+</plist>

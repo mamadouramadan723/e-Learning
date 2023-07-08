@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "629602019077",
+    "project_id": "e-learning-guinea",
+    "storage_bucket": "e-learning-guinea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629602019077:android:deaba45a2224e2182a796c",
+        "android_client_info": {
+          "package_name": "com.rmd.learn.elearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629602019077-kdt0fsrqv1822l404dn4l7b7k077id6u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rmd.learn.elearning",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "629602019077-fe3a106vvdp89ae3imv7mornc5i46k3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7ZfHO_Bo4muZnSAUOer_svnI78pc2V4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629602019077-fe3a106vvdp89ae3imv7mornc5i46k3r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "629602019077-ng30bvh5ntvj6pe6fmrvvarcer543jea.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rmd.learn.elearning"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -576,19 +576,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     itemBuilder: (context, listViewIndex) {
                       final listViewClasseRecord =
                           listViewClasseRecordList[listViewIndex];
-                      return ListTile(
-                        title: Text(
-                          listViewClasseRecord.name,
-                          style: FlutterFlowTheme.of(context).titleLarge,
-                        ),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 20.0,
-                        ),
-                        tileColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        dense: false,
+                      return Text(
+                        listViewClasseRecord.name,
+                        style: FlutterFlowTheme.of(context).bodyMedium,
                       );
                     },
                   );

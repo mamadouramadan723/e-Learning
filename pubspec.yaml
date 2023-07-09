@@ -105,6 +105,10 @@ flutter:
     - assets/pdfs/
 
 
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/fonts/icons8-computer-24.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

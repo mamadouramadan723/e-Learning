@@ -385,7 +385,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         color: Color(0xFFE0E3E7),
                       ),
                       Text(
-                        'Hello World',
+                        'Classes',
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                       Column(
@@ -420,26 +420,47 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 itemBuilder: (context, listViewIndex) {
                                   final listViewClasseRecord =
                                       listViewClasseRecordList[listViewIndex];
-                                  return ListTile(
-                                    title: Text(
-                                      listViewClasseRecord.name,
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.normal,
+                                  return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'SubjectPage',
+                                        queryParameters: {
+                                          'grade': serializeParam(
+                                            listViewClasseRecord.id,
+                                            ParamType.int,
                                           ),
+                                          'name': serializeParam(
+                                            listViewClasseRecord.name,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
+                                    child: ListTile(
+                                      title: Text(
+                                        listViewClasseRecord.name,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                      ),
+                                      trailing: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 20.0,
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      dense: false,
                                     ),
-                                    trailing: Icon(
-                                      Icons.arrow_forward_ios,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 20.0,
-                                    ),
-                                    tileColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    dense: false,
                                   );
                                 },
                               );

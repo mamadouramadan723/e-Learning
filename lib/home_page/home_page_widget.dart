@@ -85,7 +85,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
               tablet: false,
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 4.0, 0.0),
               child: Container(
                 width: 270.0,
                 height: 900.0,

@@ -392,7 +392,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           StreamBuilder<List<ClasseRecord>>(
-                            stream: queryClasseRecord(),
+                            stream: queryClasseRecord(
+                              queryBuilder: (classeRecord) =>
+                                  classeRecord.orderBy('id', descending: true),
+                            ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {

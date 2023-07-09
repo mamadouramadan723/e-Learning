@@ -52,18 +52,17 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
-            borderColor: FlutterFlowTheme.of(context).primary,
-            borderRadius: 20.0,
+            borderColor: Colors.transparent,
+            borderRadius: 30.0,
             borderWidth: 1.0,
-            buttonSize: 40.0,
-            fillColor: FlutterFlowTheme.of(context).accent1,
+            buttonSize: 60.0,
             icon: Icon(
-              Icons.add,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+              size: 30.0,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              context.pop();
             },
           ),
           title: Text(
@@ -75,7 +74,7 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(

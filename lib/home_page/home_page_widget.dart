@@ -78,7 +78,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Container(
-          width: MediaQuery.sizeOf(context).width * 0.33,
+          width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
             child: Visibility(

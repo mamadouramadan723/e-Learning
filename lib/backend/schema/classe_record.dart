@@ -16,19 +16,19 @@ class ClasseRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "id" field.
-  String? _id;
-  String get id => _id ?? '';
-  bool hasId() => _id != null;
-
   // "name" field.
   String? _name;
   String get name => _name ?? '';
   bool hasName() => _name != null;
 
+  // "id" field.
+  int? _id;
+  int get id => _id ?? 0;
+  bool hasId() => _id != null;
+
   void _initializeFields() {
-    _id = snapshotData['id'] as String?;
     _name = snapshotData['name'] as String?;
+    _id = castToType<int>(snapshotData['id']);
   }
 
   static CollectionReference get collection =>
@@ -65,13 +65,13 @@ class ClasseRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createClasseRecordData({
-  String? id,
   String? name,
+  int? id,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'id': id,
       'name': name,
+      'id': id,
     }.withoutNulls,
   );
 
@@ -83,11 +83,11 @@ class ClasseRecordDocumentEquality implements Equality<ClasseRecord> {
 
   @override
   bool equals(ClasseRecord? e1, ClasseRecord? e2) {
-    return e1?.id == e2?.id && e1?.name == e2?.name;
+    return e1?.name == e2?.name && e1?.id == e2?.id;
   }
 
   @override
-  int hash(ClasseRecord? e) => const ListEquality().hash([e?.id, e?.name]);
+  int hash(ClasseRecord? e) => const ListEquality().hash([e?.name, e?.id]);
 
   @override
   bool isValidKey(Object? o) => o is ClasseRecord;

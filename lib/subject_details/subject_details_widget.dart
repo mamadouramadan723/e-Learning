@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_pdf_viewer.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
@@ -105,7 +106,7 @@ class _SubjectDetailsWidgetState extends State<SubjectDetailsWidget> {
                         snapshot.data!;
                     return Container(
                       width: double.infinity,
-                      height: 500.0,
+                      height: MediaQuery.sizeOf(context).height * 1.0,
                       child: Stack(
                         children: [
                           Padding(
@@ -125,14 +126,13 @@ class _SubjectDetailsWidgetState extends State<SubjectDetailsWidget> {
                                 final pageViewDetailscoursRecord =
                                     pageViewDetailscoursRecordList[
                                         pageViewIndex];
-                                return ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.network(
-                                    'https://picsum.photos/seed/532/600',
-                                    width: 300.0,
-                                    height: 200.0,
-                                    fit: BoxFit.cover,
-                                  ),
+                                return FlutterFlowPdfViewer(
+                                  networkPath:
+                                      'http://www.pdf995.com/samples/pdf.pdf',
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 1.0,
+                                  horizontalScroll: false,
                                 );
                               },
                             ),

@@ -385,7 +385,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         color: Color(0xFFE0E3E7),
                       ),
                       Text(
-                        'Classes',
+                        'Hello World',
                         style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                       StreamBuilder<List<ClasseRecord>>(

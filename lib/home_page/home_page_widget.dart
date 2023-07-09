@@ -87,7 +87,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 4.0, 0.0),
               child: Container(
-                width: 270.0,
+                width: 200.0,
                 height: 900.0,
                 decoration: BoxDecoration(
                   color: Color(0xFFF1F4F8),

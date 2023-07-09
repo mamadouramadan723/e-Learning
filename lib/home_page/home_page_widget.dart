@@ -547,7 +547,54 @@ class _HomePageWidgetState extends State<HomePageWidget>
           top: true,
           child: Column(
             mainAxisSize: MainAxisSize.max,
-            children: [],
+            children: [
+              Text(
+                'Hello World',
+                style: FlutterFlowTheme.of(context).bodyMedium,
+              ),
+              StreamBuilder<List<ClasseRecord>>(
+                stream: queryClasseRecord(),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          color: FlutterFlowTheme.of(context).primary,
+                        ),
+                      ),
+                    );
+                  }
+                  List<ClasseRecord> listViewClasseRecordList = snapshot.data!;
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: listViewClasseRecordList.length,
+                    itemBuilder: (context, listViewIndex) {
+                      final listViewClasseRecord =
+                          listViewClasseRecordList[listViewIndex];
+                      return ListTile(
+                        title: Text(
+                          listViewClasseRecord.name,
+                          style: FlutterFlowTheme.of(context).titleLarge,
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 20.0,
+                        ),
+                        tileColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        dense: false,
+                      );
+                    },
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

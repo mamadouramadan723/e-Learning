@@ -8,6 +8,7 @@ import 'schema/util/firestore_util.dart';
 import 'schema/user_record.dart';
 import 'schema/classe_record.dart';
 import 'schema/cours_record.dart';
+import 'schema/detailscours_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +19,7 @@ export 'schema/util/schema_util.dart';
 export 'schema/user_record.dart';
 export 'schema/classe_record.dart';
 export 'schema/cours_record.dart';
+export 'schema/detailscours_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -169,6 +171,58 @@ Future<FFFirestorePage<CoursRecord>> queryCoursRecordPage({
     queryCollectionPage(
       CoursRecord.collection,
       CoursRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query DetailscoursRecords (as a Stream and as a Future).
+Future<int> queryDetailscoursRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      DetailscoursRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<DetailscoursRecord>> queryDetailscoursRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      DetailscoursRecord.collection,
+      DetailscoursRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<DetailscoursRecord>> queryDetailscoursRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      DetailscoursRecord.collection,
+      DetailscoursRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<DetailscoursRecord>> queryDetailscoursRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      DetailscoursRecord.collection,
+      DetailscoursRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

@@ -102,6 +102,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             grade: params.getParam('grade', ParamType.int),
             name: params.getParam('name', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'SubjectDetails',
+          path: '/subjectDetails',
+          builder: (context, params) => SubjectDetailsWidget(
+            coursId: params.getParam('coursId', ParamType.String),
+            coursName: params.getParam('coursName', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

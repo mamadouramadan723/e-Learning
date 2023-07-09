@@ -109,33 +109,25 @@ class _SubjectDetailsWidgetState extends State<SubjectDetailsWidget> {
                       height: MediaQuery.sizeOf(context).height * 1.0,
                       child: Stack(
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 40.0),
-                            child: PageView.builder(
-                              controller: _model.pageViewController ??=
-                                  PageController(
-                                      initialPage: min(
-                                          0,
-                                          pageViewDetailscoursRecordList
-                                                  .length -
-                                              1)),
-                              scrollDirection: Axis.horizontal,
-                              itemCount: pageViewDetailscoursRecordList.length,
-                              itemBuilder: (context, pageViewIndex) {
-                                final pageViewDetailscoursRecord =
-                                    pageViewDetailscoursRecordList[
-                                        pageViewIndex];
-                                return FlutterFlowPdfViewer(
-                                  networkPath:
-                                      'http://www.pdf995.com/samples/pdf.pdf',
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 1.0,
-                                  horizontalScroll: false,
-                                );
-                              },
-                            ),
+                          PageView.builder(
+                            controller: _model.pageViewController ??=
+                                PageController(
+                                    initialPage: min(
+                                        0,
+                                        pageViewDetailscoursRecordList.length -
+                                            1)),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: pageViewDetailscoursRecordList.length,
+                            itemBuilder: (context, pageViewIndex) {
+                              final pageViewDetailscoursRecord =
+                                  pageViewDetailscoursRecordList[pageViewIndex];
+                              return FlutterFlowPdfViewer(
+                                networkPath: pageViewDetailscoursRecord.content,
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: MediaQuery.sizeOf(context).height * 1.0,
+                                horizontalScroll: false,
+                              );
+                            },
                           ),
                           Align(
                             alignment: AlignmentDirectional(0.0, -1.0),

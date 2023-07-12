@@ -391,90 +391,95 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           'Classes',
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            StreamBuilder<List<ClasseRecord>>(
-                              stream: queryClasseRecord(
-                                queryBuilder: (classeRecord) =>
-                                    classeRecord.orderBy('order'),
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<ClasseRecord> listViewClasseRecordList =
-                                    snapshot.data!;
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: listViewClasseRecordList.length,
-                                  itemBuilder: (context, listViewIndex) {
-                                    final listViewClasseRecord =
-                                        listViewClasseRecordList[listViewIndex];
-                                    return InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        setState(() {
-                                          FFAppState().classe =
-                                              listViewClasseRecord.reference;
-                                        });
-
-                                        context.pushNamed(
-                                          'SubjectPage',
-                                          queryParameters: {
-                                            'name': serializeParam(
-                                              listViewClasseRecord.name,
-                                              ParamType.String,
-                                            ),
-                                            'classOrder': serializeParam(
-                                              listViewClasseRecord.order,
-                                              ParamType.int,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
-                                      child: ListTile(
-                                        title: Text(
-                                          listViewClasseRecord.name,
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleLarge
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                        trailing: Icon(
-                                          Icons.arrow_forward_ios,
+                        SingleChildScrollView(
+                          primary: false,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              StreamBuilder<List<ClasseRecord>>(
+                                stream: queryClasseRecord(
+                                  queryBuilder: (classeRecord) =>
+                                      classeRecord.orderBy('order'),
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 20.0,
+                                              .primary,
                                         ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        dense: false,
                                       ),
                                     );
-                                  },
-                                );
-                              },
-                            ),
-                          ],
+                                  }
+                                  List<ClasseRecord> listViewClasseRecordList =
+                                      snapshot.data!;
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: listViewClasseRecordList.length,
+                                    itemBuilder: (context, listViewIndex) {
+                                      final listViewClasseRecord =
+                                          listViewClasseRecordList[
+                                              listViewIndex];
+                                      return InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          setState(() {
+                                            FFAppState().classe =
+                                                listViewClasseRecord.reference;
+                                          });
+
+                                          context.pushNamed(
+                                            'SubjectPage',
+                                            queryParameters: {
+                                              'name': serializeParam(
+                                                listViewClasseRecord.name,
+                                                ParamType.String,
+                                              ),
+                                              'classOrder': serializeParam(
+                                                listViewClasseRecord.order,
+                                                ParamType.int,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        child: ListTile(
+                                          title: Text(
+                                            listViewClasseRecord.name,
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge
+                                                .override(
+                                                  fontFamily: 'Outfit',
+                                                  fontSize: 14.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                          ),
+                                          trailing: Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 20.0,
+                                          ),
+                                          tileColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          dense: false,
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
                         ),
                         Divider(
                           height: 12.0,

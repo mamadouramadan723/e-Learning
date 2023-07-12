@@ -99,16 +99,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
+          name: 'LoginPage',
+          path: '/loginPage',
+          builder: (context, params) => LoginPageWidget(),
+        ),
+        FFRoute(
           name: 'SubjectDetailsPage',
           path: '/subjectDetailsPage',
           builder: (context, params) => SubjectDetailsPageWidget(
             subjectName: params.getParam('subjectName', ParamType.String),
           ),
-        ),
-        FFRoute(
-          name: 'LoginPage',
-          path: '/loginPage',
-          builder: (context, params) => LoginPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

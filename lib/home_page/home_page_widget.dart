@@ -86,174 +86,89 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 context: context,
                 tablet: false,
               ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 4.0, 0.0),
-                child: Container(
-                  width: 200.0,
-                  height: 900.0,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFF1F4F8),
-                  ),
-                  child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          16.0, 24.0, 16.0, 16.0),
-                      child: SingleChildScrollView(
-                        primary: false,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 12.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    'e-Learning',
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: Color(0xFF101213),
-                                          fontSize: 24.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'textOnPageLoadAnimation']!),
-                                ],
-                              ),
-                            ),
-                            Divider(
-                              height: 12.0,
-                              thickness: 2.0,
-                              color: Color(0xFFE0E3E7),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 12.0, 0.0, 12.0),
-                              child: Text(
-                                'My Channel',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Outfit',
-                                      color: Color(0xFF101213),
-                                      fontSize: 12.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                            ),
-                            ListView(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  height: 40.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFF1F4F8),
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    shape: BoxShape.rectangle,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 8.0, 8.0, 8.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Text(
-                                          'Dashboard',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF57636C),
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              width: double.infinity,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF1F4F8),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 8.0, 8.0, 8.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Icon(
-                                          Icons.inbox_rounded,
-                                          color: Color(0xFF4B39EF),
-                                          size: 20.0,
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Mes Cours',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: Color(0xFF4B39EF),
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
+              child: Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 4.0, 0.0),
+                  child: Container(
+                    width: 200.0,
+                    height: 900.0,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFF1F4F8),
+                    ),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 24.0, 16.0, 16.0),
+                        child: SingleChildScrollView(
+                          primary: false,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 12.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      'e-Learning',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            fontFamily: 'Outfit',
+                                            color: Color(0xFF101213),
+                                            fontSize: 24.0,
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                                    ).animateOnPageLoad(animationsMap[
+                                        'textOnPageLoadAnimation']!),
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF1F4F8),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
+                              Divider(
+                                height: 12.0,
+                                thickness: 2.0,
+                                color: Color(0xFFE0E3E7),
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 12.0),
+                                child: Text(
+                                  'My Channel',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Outfit',
+                                        color: Color(0xFF101213),
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                ),
+                              ),
+                              ListView(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8.0, 8.0, 8.0, 8.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Icon(
-                                          Icons.date_range_rounded,
-                                          color: Color(0xFF57636C),
-                                          size: 20.0,
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Emploi de Temps',
+                                  Container(
+                                    width: double.infinity,
+                                    height: 40.0,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFFF1F4F8),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      shape: BoxShape.rectangle,
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 8.0, 8.0, 8.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            'Dashboard',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
@@ -263,93 +178,107 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   fontWeight: FontWeight.normal,
                                                 ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF1F4F8),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 8.0, 8.0, 8.0),
+                              Container(
+                                width: double.infinity,
+                                height: 40.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF1F4F8),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  shape: BoxShape.rectangle,
+                                ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 8.0, 0.0),
-                                      child: Icon(
-                                        Icons.check_box,
-                                        color: Color(0xFF57636C),
-                                        size: 16.0,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Completed Tasks',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            color: Color(0xFF57636C),
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.normal,
+                                          8.0, 8.0, 8.0, 8.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Icon(
+                                            Icons.inbox_rounded,
+                                            color: Color(0xFF4B39EF),
+                                            size: 20.0,
                                           ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Mes Cours',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color:
+                                                            Color(0xFF4B39EF),
+                                                        fontSize: 14.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF1F4F8),
-                                borderRadius: BorderRadius.circular(12.0),
-                                shape: BoxShape.rectangle,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 8.0, 8.0, 8.0),
+                              Container(
+                                width: double.infinity,
+                                height: 40.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF1F4F8),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  shape: BoxShape.rectangle,
+                                ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 8.0, 0.0),
-                                      child: Icon(
-                                        Icons.settings_outlined,
-                                        color: Color(0xFF57636C),
-                                        size: 16.0,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Settings',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Outfit',
+                                          8.0, 8.0, 8.0, 8.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Icon(
+                                            Icons.date_range_rounded,
                                             color: Color(0xFF57636C),
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.normal,
+                                            size: 20.0,
                                           ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Emploi de Temps',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color:
+                                                            Color(0xFF57636C),
+                                                        fontSize: 14.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 4.0, 0.0, 8.0),
-                              child: Container(
+                              Container(
                                 width: double.infinity,
                                 height: 40.0,
                                 decoration: BoxDecoration(
@@ -359,7 +288,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 8.0, 8.0, 8.0),
+                                      8.0, 8.0, 8.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -367,217 +296,322 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 8.0, 0.0),
                                         child: Icon(
-                                          Icons.add_rounded,
-                                          color: Color(0xFF4B39EF),
-                                          size: 24.0,
+                                          Icons.check_box,
+                                          color: Color(0xFF57636C),
+                                          size: 16.0,
                                         ),
                                       ),
                                       Text(
-                                        'Add Channel',
+                                        'Completed Tasks',
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
                                               fontFamily: 'Outfit',
-                                              color: Color(0xFF4B39EF),
+                                              color: Color(0xFF57636C),
                                               fontSize: 14.0,
-                                              fontWeight: FontWeight.w500,
+                                              fontWeight: FontWeight.normal,
                                             ),
                                       ),
                                     ],
                                   ),
                                 ),
                               ),
-                            ),
-                            Divider(
-                              height: 12.0,
-                              thickness: 2.0,
-                              color: Color(0xFFE0E3E7),
-                            ),
-                            Text(
-                              'Classes',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: SingleChildScrollView(
-                                primary: false,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    StreamBuilder<List<ClasseRecord>>(
-                                      stream: queryClasseRecord(
-                                        queryBuilder: (classeRecord) =>
-                                            classeRecord.orderBy('order'),
+                              Container(
+                                width: double.infinity,
+                                height: 40.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF1F4F8),
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 8.0, 8.0, 8.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 8.0, 0.0),
+                                        child: Icon(
+                                          Icons.settings_outlined,
+                                          color: Color(0xFF57636C),
+                                          size: 16.0,
+                                        ),
                                       ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                              ),
+                                      Text(
+                                        'Settings',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              color: Color(0xFF57636C),
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.normal,
                                             ),
-                                          );
-                                        }
-                                        List<ClasseRecord>
-                                            listViewClasseRecordList =
-                                            snapshot.data!;
-                                        return ListView.builder(
-                                          padding: EdgeInsets.zero,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount:
-                                              listViewClasseRecordList.length,
-                                          itemBuilder:
-                                              (context, listViewIndex) {
-                                            final listViewClasseRecord =
-                                                listViewClasseRecordList[
-                                                    listViewIndex];
-                                            return InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                setState(() {
-                                                  FFAppState().classe =
-                                                      listViewClasseRecord
-                                                          .reference;
-                                                });
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 4.0, 0.0, 8.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 40.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF1F4F8),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    shape: BoxShape.rectangle,
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 8.0, 8.0, 8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 8.0, 0.0),
+                                          child: Icon(
+                                            Icons.add_rounded,
+                                            color: Color(0xFF4B39EF),
+                                            size: 24.0,
+                                          ),
+                                        ),
+                                        Text(
+                                          'Add Channel',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Outfit',
+                                                color: Color(0xFF4B39EF),
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Divider(
+                                height: 12.0,
+                                thickness: 2.0,
+                                color: Color(0xFFE0E3E7),
+                              ),
+                              Text(
+                                'Classes',
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: SingleChildScrollView(
+                                  primary: false,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child:
+                                            StreamBuilder<List<ClasseRecord>>(
+                                          stream: queryClasseRecord(
+                                            queryBuilder: (classeRecord) =>
+                                                classeRecord.orderBy('order'),
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            List<ClasseRecord>
+                                                listViewClasseRecordList =
+                                                snapshot.data!;
+                                            return ListView.builder(
+                                              padding: EdgeInsets.zero,
+                                              primary: false,
+                                              shrinkWrap: true,
+                                              scrollDirection: Axis.vertical,
+                                              itemCount:
+                                                  listViewClasseRecordList
+                                                      .length,
+                                              itemBuilder:
+                                                  (context, listViewIndex) {
+                                                final listViewClasseRecord =
+                                                    listViewClasseRecordList[
+                                                        listViewIndex];
+                                                return Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      setState(() {
+                                                        FFAppState().classe =
+                                                            listViewClasseRecord
+                                                                .reference;
+                                                      });
 
-                                                context.pushNamed(
-                                                  'SubjectPage',
-                                                  queryParameters: {
-                                                    'name': serializeParam(
-                                                      listViewClasseRecord.name,
-                                                      ParamType.String,
+                                                      context.pushNamed(
+                                                        'SubjectPage',
+                                                        queryParameters: {
+                                                          'name':
+                                                              serializeParam(
+                                                            listViewClasseRecord
+                                                                .name,
+                                                            ParamType.String,
+                                                          ),
+                                                          'classOrder':
+                                                              serializeParam(
+                                                            listViewClasseRecord
+                                                                .order,
+                                                            ParamType.int,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: ListTile(
+                                                      title: Text(
+                                                        listViewClasseRecord
+                                                            .name,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .titleLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Outfit',
+                                                              fontSize: 14.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                            ),
+                                                      ),
+                                                      trailing: Icon(
+                                                        Icons.arrow_forward_ios,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 20.0,
+                                                      ),
+                                                      tileColor: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      dense: false,
                                                     ),
-                                                    'classOrder':
-                                                        serializeParam(
-                                                      listViewClasseRecord
-                                                          .order,
-                                                      ParamType.int,
-                                                    ),
-                                                  }.withoutNulls,
+                                                  ),
                                                 );
                                               },
-                                              child: ListTile(
-                                                title: Text(
-                                                  listViewClasseRecord.name,
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Divider(
+                                height: 12.0,
+                                thickness: 2.0,
+                                color: Color(0xFFE0E3E7),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 24.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 8.0, 0.0, 8.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              'https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+                                          width: 32.0,
+                                          height: 32.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 0.0, 0.0),
+                                          child: SingleChildScrollView(
+                                            primary: false,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Andrew D.',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .titleLarge
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily: 'Outfit',
+                                                        color:
+                                                            Color(0xFF101213),
                                                         fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
                                                 ),
-                                                trailing: Icon(
-                                                  Icons.arrow_forward_ios,
-                                                  color: FlutterFlowTheme.of(
+                                                Text(
+                                                  'Admin',
+                                                  style: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
-                                                  size: 20.0,
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color:
+                                                            Color(0xFF57636C),
+                                                        fontSize: 12.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
                                                 ),
-                                                tileColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                dense: false,
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Divider(
-                              height: 12.0,
-                              thickness: 2.0,
-                              color: Color(0xFFE0E3E7),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 24.0, 0.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 0.0, 8.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                      child: CachedNetworkImage(
-                                        imageUrl:
-                                            'https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-                                        width: 32.0,
-                                        height: 32.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Align(
-                                      alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
-                                        child: SingleChildScrollView(
-                                          primary: false,
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Andrew D.',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF101213),
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                              ),
-                                              Text(
-                                                'Admin',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF57636C),
-                                                          fontSize: 12.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

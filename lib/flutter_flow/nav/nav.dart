@@ -91,33 +91,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
-          name: 'LoginPage',
-          path: '/loginPage',
-          builder: (context, params) => LoginPageWidget(),
-        ),
-        FFRoute(
           name: 'SubjectPage',
           path: '/subjectPage',
           builder: (context, params) => SubjectPageWidget(
-            grade: params.getParam('grade', ParamType.int),
+            classOrder: params.getParam('classOrder', ParamType.int),
             name: params.getParam('name', ParamType.String),
           ),
         ),
         FFRoute(
-          name: 'SubjectDetails',
-          path: '/subjectDetails',
-          builder: (context, params) => SubjectDetailsWidget(
-            coursId: params.getParam('coursId', ParamType.String),
-            coursName: params.getParam('coursName', ParamType.String),
+          name: 'SubjectDetailsPage',
+          path: '/subjectDetailsPage',
+          builder: (context, params) => SubjectDetailsPageWidget(
+            subjectName: params.getParam('subjectName', ParamType.String),
           ),
         ),
         FFRoute(
-          name: 'SubjectDetailsPage2',
-          path: '/subjectDetailsPage2',
-          builder: (context, params) => SubjectDetailsPage2Widget(
-            subjectName: params.getParam('subjectName', ParamType.String),
-            subjectId: params.getParam('subjectId', ParamType.String),
-          ),
+          name: 'LoginPage',
+          path: '/loginPage',
+          builder: (context, params) => LoginPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -59,8 +59,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
           !anim.applyInitialState),
       this,
     );
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -72,6 +70,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
@@ -396,8 +396,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           children: [
                             StreamBuilder<List<ClasseRecord>>(
                               stream: queryClasseRecord(
-                                queryBuilder: (classeRecord) => classeRecord
-                                    .orderBy('id', descending: true),
+                                queryBuilder: (classeRecord) =>
+                                    classeRecord.orderBy('order'),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -429,16 +429,21 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        setState(() {
+                                          FFAppState().classe =
+                                              listViewClasseRecord.reference;
+                                        });
+
                                         context.pushNamed(
                                           'SubjectPage',
                                           queryParameters: {
-                                            'grade': serializeParam(
-                                              listViewClasseRecord.id,
-                                              ParamType.int,
-                                            ),
                                             'name': serializeParam(
                                               listViewClasseRecord.name,
                                               ParamType.String,
+                                            ),
+                                            'classOrder': serializeParam(
+                                              listViewClasseRecord.order,
+                                              ParamType.int,
                                             ),
                                           }.withoutNulls,
                                         );

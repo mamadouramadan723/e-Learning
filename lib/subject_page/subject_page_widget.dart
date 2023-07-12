@@ -15,11 +15,11 @@ export 'subject_page_model.dart';
 class SubjectPageWidget extends StatefulWidget {
   const SubjectPageWidget({
     Key? key,
-    required this.grade,
+    required this.classOrder,
     required this.name,
   }) : super(key: key);
 
-  final int? grade;
+  final int? classOrder;
   final String? name;
 
   @override
@@ -66,8 +66,6 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget>
           !anim.applyInitialState),
       this,
     );
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -79,6 +77,8 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(
@@ -430,47 +430,26 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget>
                                   itemBuilder: (context, listViewIndex) {
                                     final listViewClasseRecord =
                                         listViewClasseRecordList[listViewIndex];
-                                    return InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'SubjectPage',
-                                          queryParameters: {
-                                            'grade': serializeParam(
-                                              listViewClasseRecord.id,
-                                              ParamType.int,
+                                    return ListTile(
+                                      title: Text(
+                                        listViewClasseRecord.name,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Outfit',
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.normal,
                                             ),
-                                            'name': serializeParam(
-                                              listViewClasseRecord.name,
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
-                                      child: ListTile(
-                                        title: Text(
-                                          listViewClasseRecord.name,
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleLarge
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                        trailing: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 20.0,
-                                        ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        dense: false,
                                       ),
+                                      trailing: Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 20.0,
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      dense: false,
                                     );
                                   },
                                 );
@@ -607,7 +586,11 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget>
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           StreamBuilder<List<CoursRecord>>(
-                            stream: queryCoursRecord(),
+                            stream: queryCoursRecord(
+                              queryBuilder: (coursRecord) => coursRecord.where(
+                                  'classesforthissubject',
+                                  arrayContains: widget.classOrder),
+                            ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -644,16 +627,16 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          setState(() {
+                                            FFAppState().cours =
+                                                listViewCoursRecord.reference;
+                                          });
+
                                           context.pushNamed(
-                                            'SubjectDetailsPage2',
+                                            'SubjectDetailsPage',
                                             queryParameters: {
                                               'subjectName': serializeParam(
                                                 listViewCoursRecord.name,
-                                                ParamType.String,
-                                              ),
-                                              'subjectId': serializeParam(
-                                                listViewCoursRecord
-                                                    .reference.id,
                                                 ParamType.String,
                                               ),
                                             }.withoutNulls,

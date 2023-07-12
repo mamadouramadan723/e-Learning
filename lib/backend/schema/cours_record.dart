@@ -36,11 +36,17 @@ class CoursRecord extends FirestoreRecord {
   String get id => _id ?? '';
   bool hasId() => _id != null;
 
+  // "classesforthissubject" field.
+  List<int>? _classesforthissubject;
+  List<int> get classesforthissubject => _classesforthissubject ?? const [];
+  bool hasClassesforthissubject() => _classesforthissubject != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _description = snapshotData['description'] as String?;
     _imageUrl = snapshotData['imageUrl'] as String?;
     _id = snapshotData['id'] as String?;
+    _classesforthissubject = getDataList(snapshotData['classesforthissubject']);
   }
 
   static CollectionReference get collection =>
@@ -99,15 +105,18 @@ class CoursRecordDocumentEquality implements Equality<CoursRecord> {
 
   @override
   bool equals(CoursRecord? e1, CoursRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.name == e2?.name &&
         e1?.description == e2?.description &&
         e1?.imageUrl == e2?.imageUrl &&
-        e1?.id == e2?.id;
+        e1?.id == e2?.id &&
+        listEquality.equals(
+            e1?.classesforthissubject, e2?.classesforthissubject);
   }
 
   @override
-  int hash(CoursRecord? e) =>
-      const ListEquality().hash([e?.name, e?.description, e?.imageUrl, e?.id]);
+  int hash(CoursRecord? e) => const ListEquality().hash(
+      [e?.name, e?.description, e?.imageUrl, e?.id, e?.classesforthissubject]);
 
   @override
   bool isValidKey(Object? o) => o is CoursRecord;

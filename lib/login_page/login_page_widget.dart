@@ -22,8 +22,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LoginPageModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -35,6 +33,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
       child: Scaffold(

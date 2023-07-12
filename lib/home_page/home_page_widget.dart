@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -89,7 +88,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
               child: Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 4.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Container(
                     width: 200.0,
                     height: 900.0,
@@ -97,10 +96,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       color: Color(0xFFF1F4F8),
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 24.0, 16.0, 16.0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 24.0, 8.0, 8.0),
                         child: SingleChildScrollView(
                           primary: false,
                           child: Column(
@@ -137,7 +136,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 12.0),
                                 child: Text(
-                                  'My Channel',
+                                  'My Dashboard',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -147,42 +146,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                         fontWeight: FontWeight.w600,
                                       ),
                                 ),
-                              ),
-                              ListView(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    height: 40.0,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFFF1F4F8),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      shape: BoxShape.rectangle,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 8.0, 8.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            'Dashboard',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Outfit',
-                                                  color: Color(0xFF57636C),
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
                               ),
                               Container(
                                 width: double.infinity,
@@ -354,49 +317,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 8.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 40.0,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFF1F4F8),
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    shape: BoxShape.rectangle,
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 8.0, 8.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 8.0, 0.0),
-                                          child: Icon(
-                                            Icons.add_rounded,
-                                            color: Color(0xFF4B39EF),
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                        Text(
-                                          'Add Channel',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Outfit',
-                                                color: Color(0xFF4B39EF),
-                                                fontSize: 14.0,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
                               Divider(
                                 height: 12.0,
                                 thickness: 2.0,
@@ -536,79 +456,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 height: 12.0,
                                 thickness: 2.0,
                                 color: Color(0xFFE0E3E7),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 24.0, 0.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 8.0, 0.0, 8.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                        child: CachedNetworkImage(
-                                          imageUrl:
-                                              'https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-                                          width: 32.0,
-                                          height: 32.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 0.0, 0.0),
-                                          child: SingleChildScrollView(
-                                            primary: false,
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'Andrew D.',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            Color(0xFF101213),
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  'Admin',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            Color(0xFF57636C),
-                                                        fontSize: 12.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ),
                             ],
                           ),

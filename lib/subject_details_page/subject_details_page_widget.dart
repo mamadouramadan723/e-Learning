@@ -67,7 +67,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                 ),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 16.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 48.0, 16.0, 16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,

@@ -112,13 +112,16 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                 return Align(
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Container(
-                                    height: 200.0,
-                                    decoration: BoxDecoration(),
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
                                     child: Container(
                                       width: double.infinity,
                                       color: Colors.white,
                                       child: ExpandableNotifier(
-                                        initialExpanded: false,
+                                        initialExpanded: true,
                                         child: ExpandablePanel(
                                           header: Text(
                                             listViewChapitreRecord.name,
@@ -127,78 +130,90 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                 .override(
                                                   fontFamily: 'Outfit',
                                                   color: Colors.black,
+                                                  fontSize: 16.0,
                                                 ),
                                           ),
                                           collapsed: Container(),
-                                          expanded: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: StreamBuilder<
-                                                    List<LessonRecord>>(
-                                                  stream: queryLessonRecord(),
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }
-                                                    List<LessonRecord>
-                                                        listViewLessonRecordList =
-                                                        snapshot.data!;
-                                                    return ListView.builder(
-                                                      padding: EdgeInsets.zero,
-                                                      primary: false,
-                                                      shrinkWrap: true,
-                                                      scrollDirection:
-                                                          Axis.vertical,
-                                                      itemCount:
-                                                          listViewLessonRecordList
-                                                              .length,
-                                                      itemBuilder: (context,
-                                                          listViewIndex) {
-                                                        final listViewLessonRecord =
-                                                            listViewLessonRecordList[
-                                                                listViewIndex];
-                                                        return ListTile(
-                                                          title: Text(
-                                                            listViewLessonRecord
-                                                                .title,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleLarge,
-                                                          ),
-                                                          trailing: Icon(
-                                                            Icons
-                                                                .arrow_forward_ios,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 20.0,
-                                                          ),
-                                                          tileColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          dense: false,
+                                          expanded: Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: SingleChildScrollView(
+                                              primary: false,
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: StreamBuilder<
+                                                        List<LessonRecord>>(
+                                                      stream:
+                                                          queryLessonRecord(),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<LessonRecord>
+                                                            listViewLessonRecordList =
+                                                            snapshot.data!;
+                                                        return ListView.builder(
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          primary: false,
+                                                          shrinkWrap: true,
+                                                          scrollDirection:
+                                                              Axis.vertical,
+                                                          itemCount:
+                                                              listViewLessonRecordList
+                                                                  .length,
+                                                          itemBuilder: (context,
+                                                              listViewIndex) {
+                                                            final listViewLessonRecord =
+                                                                listViewLessonRecordList[
+                                                                    listViewIndex];
+                                                            return ListTile(
+                                                              title: Text(
+                                                                listViewLessonRecord
+                                                                    .title,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleLarge,
+                                                              ),
+                                                              trailing: Icon(
+                                                                Icons
+                                                                    .arrow_forward_ios,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 20.0,
+                                                              ),
+                                                              tileColor: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              dense: false,
+                                                            );
+                                                          },
                                                         );
                                                       },
-                                                    );
-                                                  },
-                                                ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
+                                            ),
                                           ),
                                           theme: ExpandableThemeData(
                                             tapHeaderToExpand: true,

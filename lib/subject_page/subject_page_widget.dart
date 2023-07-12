@@ -645,15 +645,15 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget>
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                            'SubjectDetails',
+                                            'SubjectDetailsPage2',
                                             queryParameters: {
-                                              'coursId': serializeParam(
-                                                listViewCoursRecord
-                                                    .reference.id,
+                                              'subjectName': serializeParam(
+                                                listViewCoursRecord.name,
                                                 ParamType.String,
                                               ),
-                                              'coursName': serializeParam(
-                                                listViewCoursRecord.name,
+                                              'subjectId': serializeParam(
+                                                listViewCoursRecord
+                                                    .reference.id,
                                                 ParamType.String,
                                               ),
                                             }.withoutNulls,

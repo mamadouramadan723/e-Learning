@@ -110,6 +110,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             coursId: params.getParam('coursId', ParamType.String),
             coursName: params.getParam('coursName', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'SubjectDetailsPage2',
+          path: '/subjectDetailsPage2',
+          builder: (context, params) => SubjectDetailsPage2Widget(
+            subjectName: params.getParam('subjectName', ParamType.String),
+            subjectId: params.getParam('subjectId', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

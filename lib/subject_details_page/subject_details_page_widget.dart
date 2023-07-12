@@ -191,7 +191,16 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                     .title,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .titleLarge,
+                                                                    .titleLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Outfit',
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .normal,
+                                                                    ),
                                                               ),
                                                               trailing: Icon(
                                                                 Icons

@@ -60,21 +60,6 @@ Future<List<UserRecord>> queryUserRecordOnce({
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<UserRecord>> queryUserRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      UserRecord.collection,
-      UserRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
 /// Functions to query ClasseRecords (as a Stream and as a Future).
 Future<int> queryClasseRecordCount({
   Query Function(Query)? queryBuilder,
@@ -110,21 +95,6 @@ Future<List<ClasseRecord>> queryClasseRecordOnce({
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<ClasseRecord>> queryClasseRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      ClasseRecord.collection,
-      ClasseRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
     );
 
 /// Functions to query CoursRecords (as a Stream and as a Future).
@@ -164,21 +134,6 @@ Future<List<CoursRecord>> queryCoursRecordOnce({
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<CoursRecord>> queryCoursRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      CoursRecord.collection,
-      CoursRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
 /// Functions to query ChapitreRecords (as a Stream and as a Future).
 Future<int> queryChapitreRecordCount({
   Query Function(Query)? queryBuilder,
@@ -216,21 +171,6 @@ Future<List<ChapitreRecord>> queryChapitreRecordOnce({
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<ChapitreRecord>> queryChapitreRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      ChapitreRecord.collection,
-      ChapitreRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
 /// Functions to query LessonRecords (as a Stream and as a Future).
 Future<int> queryLessonRecordCount({
   Query Function(Query)? queryBuilder,
@@ -266,21 +206,6 @@ Future<List<LessonRecord>> queryLessonRecordOnce({
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<LessonRecord>> queryLessonRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      LessonRecord.collection,
-      LessonRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
     );
 
 Future<int> queryCollectionCount(
@@ -429,4 +354,9 @@ Future maybeCreateUser(User user) async {
 
   await userRecord.set(userData);
   currentUserDocument = UserRecord.getDocumentFromData(userData, userRecord);
+}
+
+Future updateUserDocument({String? email}) async {
+  await currentUserDocument?.reference
+      .update(createUserRecordData(email: email));
 }

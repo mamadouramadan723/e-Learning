@@ -41,30 +41,30 @@ class LessonRecord extends FirestoreRecord {
   List<DateTime> get modificationDate => _modificationDate ?? const [];
   bool hasModificationDate() => _modificationDate != null;
 
-  // "coursId" field.
-  DocumentReference? _coursId;
-  DocumentReference? get coursId => _coursId;
-  bool hasCoursId() => _coursId != null;
-
-  // "chapterId" field.
-  DocumentReference? _chapterId;
-  DocumentReference? get chapterId => _chapterId;
-  bool hasChapterId() => _chapterId != null;
-
-  // "classId" field.
-  DocumentReference? _classId;
-  DocumentReference? get classId => _classId;
-  bool hasClassId() => _classId != null;
-
   // "title" field.
   String? _title;
   String get title => _title ?? '';
   bool hasTitle() => _title != null;
 
-  // "orderOfThelesson" field.
-  int? _orderOfThelesson;
-  int get orderOfThelesson => _orderOfThelesson ?? 0;
-  bool hasOrderOfThelesson() => _orderOfThelesson != null;
+  // "classeId" field.
+  String? _classeId;
+  String get classeId => _classeId ?? '';
+  bool hasClasseId() => _classeId != null;
+
+  // "coursId" field.
+  String? _coursId;
+  String get coursId => _coursId ?? '';
+  bool hasCoursId() => _coursId != null;
+
+  // "chapitreId" field.
+  String? _chapitreId;
+  String get chapitreId => _chapitreId ?? '';
+  bool hasChapitreId() => _chapitreId != null;
+
+  // "orderOfTheLesson" field.
+  int? _orderOfTheLesson;
+  int get orderOfTheLesson => _orderOfTheLesson ?? 0;
+  bool hasOrderOfTheLesson() => _orderOfTheLesson != null;
 
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
@@ -72,11 +72,11 @@ class LessonRecord extends FirestoreRecord {
     _creationDate = snapshotData['creationDate'] as DateTime?;
     _createdBy = snapshotData['createdBy'] as String?;
     _modificationDate = getDataList(snapshotData['modificationDate']);
-    _coursId = snapshotData['coursId'] as DocumentReference?;
-    _chapterId = snapshotData['chapterId'] as DocumentReference?;
-    _classId = snapshotData['classId'] as DocumentReference?;
     _title = snapshotData['title'] as String?;
-    _orderOfThelesson = castToType<int>(snapshotData['orderOfThelesson']);
+    _classeId = snapshotData['classeId'] as String?;
+    _coursId = snapshotData['coursId'] as String?;
+    _chapitreId = snapshotData['chapitreId'] as String?;
+    _orderOfTheLesson = castToType<int>(snapshotData['orderOfTheLesson']);
   }
 
   static CollectionReference get collection =>
@@ -117,11 +117,11 @@ Map<String, dynamic> createLessonRecordData({
   String? content,
   DateTime? creationDate,
   String? createdBy,
-  DocumentReference? coursId,
-  DocumentReference? chapterId,
-  DocumentReference? classId,
   String? title,
-  int? orderOfThelesson,
+  String? classeId,
+  String? coursId,
+  String? chapitreId,
+  int? orderOfTheLesson,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -129,11 +129,11 @@ Map<String, dynamic> createLessonRecordData({
       'content': content,
       'creationDate': creationDate,
       'createdBy': createdBy,
-      'coursId': coursId,
-      'chapterId': chapterId,
-      'classId': classId,
       'title': title,
-      'orderOfThelesson': orderOfThelesson,
+      'classeId': classeId,
+      'coursId': coursId,
+      'chapitreId': chapitreId,
+      'orderOfTheLesson': orderOfTheLesson,
     }.withoutNulls,
   );
 
@@ -151,11 +151,11 @@ class LessonRecordDocumentEquality implements Equality<LessonRecord> {
         e1?.creationDate == e2?.creationDate &&
         e1?.createdBy == e2?.createdBy &&
         listEquality.equals(e1?.modificationDate, e2?.modificationDate) &&
-        e1?.coursId == e2?.coursId &&
-        e1?.chapterId == e2?.chapterId &&
-        e1?.classId == e2?.classId &&
         e1?.title == e2?.title &&
-        e1?.orderOfThelesson == e2?.orderOfThelesson;
+        e1?.classeId == e2?.classeId &&
+        e1?.coursId == e2?.coursId &&
+        e1?.chapitreId == e2?.chapitreId &&
+        e1?.orderOfTheLesson == e2?.orderOfTheLesson;
   }
 
   @override
@@ -165,11 +165,11 @@ class LessonRecordDocumentEquality implements Equality<LessonRecord> {
         e?.creationDate,
         e?.createdBy,
         e?.modificationDate,
-        e?.coursId,
-        e?.chapterId,
-        e?.classId,
         e?.title,
-        e?.orderOfThelesson
+        e?.classeId,
+        e?.coursId,
+        e?.chapitreId,
+        e?.orderOfTheLesson
       ]);
 
   @override

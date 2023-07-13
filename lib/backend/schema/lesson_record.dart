@@ -61,6 +61,11 @@ class LessonRecord extends FirestoreRecord {
   String get title => _title ?? '';
   bool hasTitle() => _title != null;
 
+  // "orderOfThelesson" field.
+  int? _orderOfThelesson;
+  int get orderOfThelesson => _orderOfThelesson ?? 0;
+  bool hasOrderOfThelesson() => _orderOfThelesson != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _content = snapshotData['content'] as String?;
@@ -71,6 +76,7 @@ class LessonRecord extends FirestoreRecord {
     _chapterId = snapshotData['chapterId'] as DocumentReference?;
     _classId = snapshotData['classId'] as DocumentReference?;
     _title = snapshotData['title'] as String?;
+    _orderOfThelesson = castToType<int>(snapshotData['orderOfThelesson']);
   }
 
   static CollectionReference get collection =>
@@ -115,6 +121,7 @@ Map<String, dynamic> createLessonRecordData({
   DocumentReference? chapterId,
   DocumentReference? classId,
   String? title,
+  int? orderOfThelesson,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -126,6 +133,7 @@ Map<String, dynamic> createLessonRecordData({
       'chapterId': chapterId,
       'classId': classId,
       'title': title,
+      'orderOfThelesson': orderOfThelesson,
     }.withoutNulls,
   );
 
@@ -146,7 +154,8 @@ class LessonRecordDocumentEquality implements Equality<LessonRecord> {
         e1?.coursId == e2?.coursId &&
         e1?.chapterId == e2?.chapterId &&
         e1?.classId == e2?.classId &&
-        e1?.title == e2?.title;
+        e1?.title == e2?.title &&
+        e1?.orderOfThelesson == e2?.orderOfThelesson;
   }
 
   @override
@@ -159,7 +168,8 @@ class LessonRecordDocumentEquality implements Equality<LessonRecord> {
         e?.coursId,
         e?.chapterId,
         e?.classId,
-        e?.title
+        e?.title,
+        e?.orderOfThelesson
       ]);
 
   @override

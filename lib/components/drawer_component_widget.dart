@@ -335,7 +335,7 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget>
                                     onTap: () async {
                                       setState(() {
                                         FFAppState().classe =
-                                            listViewClasseRecord.reference;
+                                            listViewClasseRecord.id;
                                       });
 
                                       context.pushNamed(

@@ -108,6 +108,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/subjectDetailsPage',
           builder: (context, params) => SubjectDetailsPageWidget(
             subjectName: params.getParam('subjectName', ParamType.String),
+            orderOfThelesson:
+                params.getParam('orderOfThelesson', ParamType.int),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

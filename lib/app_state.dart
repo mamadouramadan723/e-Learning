@@ -12,35 +12,55 @@ class FFAppState extends ChangeNotifier {
 
   FFAppState._internal();
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _classe = prefs.getString('ff_classe') ?? _classe;
+    });
+    _safeInit(() {
+      _cours = prefs.getString('ff_cours') ?? _cours;
+    });
+    _safeInit(() {
+      _chapitre = prefs.getString('ff_chapitre') ?? _chapitre;
+    });
+    _safeInit(() {
+      _lesson = prefs.getString('ff_lesson') ?? _lesson;
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
 
-  DocumentReference? _classe = FirebaseFirestore.instance.doc('/classe/TSE');
-  DocumentReference? get classe => _classe;
-  set classe(DocumentReference? _value) {
+  late SharedPreferences prefs;
+
+  String _classe = 'TSE';
+  String get classe => _classe;
+  set classe(String _value) {
     _classe = _value;
+    prefs.setString('ff_classe', _value);
   }
 
-  DocumentReference? _cours = FirebaseFirestore.instance.doc('/cours/Anglais');
-  DocumentReference? get cours => _cours;
-  set cours(DocumentReference? _value) {
+  String _cours = 'Anglais';
+  String get cours => _cours;
+  set cours(String _value) {
     _cours = _value;
+    prefs.setString('ff_cours', _value);
   }
 
-  DocumentReference? _chapitre = FirebaseFirestore.instance.doc('/chapitre/1');
-  DocumentReference? get chapitre => _chapitre;
-  set chapitre(DocumentReference? _value) {
+  String _chapitre = 'TSEAnglais2ndGroupVerbs';
+  String get chapitre => _chapitre;
+  set chapitre(String _value) {
     _chapitre = _value;
+    prefs.setString('ff_chapitre', _value);
   }
 
-  DocumentReference? _lesson = FirebaseFirestore.instance.doc('/lesson/1');
-  DocumentReference? get lesson => _lesson;
-  set lesson(DocumentReference? _value) {
+  String _lesson = 'dummy';
+  String get lesson => _lesson;
+  set lesson(String _value) {
     _lesson = _value;
+    prefs.setString('ff_lesson', _value);
   }
 }
 

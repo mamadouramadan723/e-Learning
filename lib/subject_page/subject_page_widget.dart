@@ -180,7 +180,7 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget> {
                                         onTap: () async {
                                           setState(() {
                                             FFAppState().cours =
-                                                listViewCoursRecord.reference;
+                                                listViewCoursRecord.id;
                                           });
 
                                           context.pushNamed(

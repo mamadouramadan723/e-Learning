@@ -26,21 +26,27 @@ class ChapitreRecord extends FirestoreRecord {
   String get name => _name ?? '';
   bool hasName() => _name != null;
 
+  // "order" field.
+  int? _order;
+  int get order => _order ?? 0;
+  bool hasOrder() => _order != null;
+
   // "coursId" field.
-  DocumentReference? _coursId;
-  DocumentReference? get coursId => _coursId;
+  String? _coursId;
+  String get coursId => _coursId ?? '';
   bool hasCoursId() => _coursId != null;
 
   // "classeId" field.
-  DocumentReference? _classeId;
-  DocumentReference? get classeId => _classeId;
+  String? _classeId;
+  String get classeId => _classeId ?? '';
   bool hasClasseId() => _classeId != null;
 
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _name = snapshotData['name'] as String?;
-    _coursId = snapshotData['coursId'] as DocumentReference?;
-    _classeId = snapshotData['classeId'] as DocumentReference?;
+    _order = castToType<int>(snapshotData['order']);
+    _coursId = snapshotData['coursId'] as String?;
+    _classeId = snapshotData['classeId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -80,13 +86,15 @@ class ChapitreRecord extends FirestoreRecord {
 Map<String, dynamic> createChapitreRecordData({
   String? id,
   String? name,
-  DocumentReference? coursId,
-  DocumentReference? classeId,
+  int? order,
+  String? coursId,
+  String? classeId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id': id,
       'name': name,
+      'order': order,
       'coursId': coursId,
       'classeId': classeId,
     }.withoutNulls,
@@ -102,13 +110,14 @@ class ChapitreRecordDocumentEquality implements Equality<ChapitreRecord> {
   bool equals(ChapitreRecord? e1, ChapitreRecord? e2) {
     return e1?.id == e2?.id &&
         e1?.name == e2?.name &&
+        e1?.order == e2?.order &&
         e1?.coursId == e2?.coursId &&
         e1?.classeId == e2?.classeId;
   }
 
   @override
-  int hash(ChapitreRecord? e) =>
-      const ListEquality().hash([e?.id, e?.name, e?.coursId, e?.classeId]);
+  int hash(ChapitreRecord? e) => const ListEquality()
+      .hash([e?.id, e?.name, e?.order, e?.coursId, e?.classeId]);
 
   @override
   bool isValidKey(Object? o) => o is ChapitreRecord;

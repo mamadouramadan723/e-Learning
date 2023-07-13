@@ -14,9 +14,12 @@ class SubjectDetailsPageWidget extends StatefulWidget {
   const SubjectDetailsPageWidget({
     Key? key,
     required this.subjectName,
-  }) : super(key: key);
+    int? orderOfThelesson,
+  })  : this.orderOfThelesson = orderOfThelesson ?? 1,
+        super(key: key);
 
   final String? subjectName;
+  final int orderOfThelesson;
 
   @override
   _SubjectDetailsPageWidgetState createState() =>

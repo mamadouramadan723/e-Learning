@@ -42,14 +42,14 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_classe', _value);
   }
 
-  String _cours = 'Anglais';
+  String _cours = 'Maths';
   String get cours => _cours;
   set cours(String _value) {
     _cours = _value;
     prefs.setString('ff_cours', _value);
   }
 
-  String _chapitre = 'TSEAnglais2ndGroupVerbs';
+  String _chapitre = 'TSEMathsAlgebre';
   String get chapitre => _chapitre;
   set chapitre(String _value) {
     _chapitre = _value;

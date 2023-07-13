@@ -71,7 +71,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                     color: Color(0xFFF1F4F8),
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(8.0, 48.0, 8.0, 16.0),

@@ -178,7 +178,24 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                               List<
                                                                   LessonRecord>>(
                                                             stream:
-                                                                queryLessonRecord(),
+                                                                queryLessonRecord(
+                                                              queryBuilder: (lessonRecord) => lessonRecord
+                                                                  .where(
+                                                                      'classeId',
+                                                                      isEqualTo:
+                                                                          FFAppState()
+                                                                              .classe)
+                                                                  .where(
+                                                                      'coursId',
+                                                                      isEqualTo:
+                                                                          FFAppState()
+                                                                              .cours)
+                                                                  .where(
+                                                                      'chapitreId',
+                                                                      isEqualTo:
+                                                                          FFAppState()
+                                                                              .chapitre),
+                                                            ),
                                                             builder: (context,
                                                                 snapshot) {
                                                               // Customize what your widget looks like when it's loading.

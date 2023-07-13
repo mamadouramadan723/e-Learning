@@ -90,7 +90,13 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                           Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: StreamBuilder<List<ChapitreRecord>>(
-                              stream: queryChapitreRecord(),
+                              stream: queryChapitreRecord(
+                                queryBuilder: (chapitreRecord) => chapitreRecord
+                                    .where('classeId',
+                                        isEqualTo: FFAppState().classe)
+                                    .where('coursId',
+                                        isEqualTo: FFAppState().cours),
+                              ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {

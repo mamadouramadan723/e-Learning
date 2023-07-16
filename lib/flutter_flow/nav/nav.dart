@@ -99,11 +99,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'LoginPage',
-          path: '/loginPage',
-          builder: (context, params) => LoginPageWidget(),
-        ),
-        FFRoute(
           name: 'SubjectDetailsPage',
           path: '/subjectDetailsPage',
           builder: (context, params) => SubjectDetailsPageWidget(
@@ -111,6 +106,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             orderOfThelesson:
                 params.getParam('orderOfThelesson', ParamType.int),
           ),
+        ),
+        FFRoute(
+          name: 'LoginPage',
+          path: '/loginPage',
+          builder: (context, params) => LoginPageWidget(),
+        ),
+        FFRoute(
+          name: 'PhoneLoginPage',
+          path: '/phoneLoginPage',
+          builder: (context, params) => PhoneLoginPageWidget(),
+        ),
+        FFRoute(
+          name: 'ProfilePage',
+          path: '/profilePage',
+          builder: (context, params) => ProfilePageWidget(),
+        ),
+        FFRoute(
+          name: 'ResetPasswordPage',
+          path: '/resetPasswordPage',
+          builder: (context, params) => ResetPasswordPageWidget(),
+        ),
+        FFRoute(
+          name: 'SMSCodeVerificationPage',
+          path: '/sMSCodeVerificationPage',
+          builder: (context, params) => SMSCodeVerificationPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

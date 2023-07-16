@@ -61,13 +61,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     decoration: BoxDecoration(
                       color: Color(0xFFF1F4F8),
                     ),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
-                      child: wrapWithModel(
-                        model: _model.drawerComponentModel,
-                        updateCallback: () => setState(() {}),
-                        child: DrawerComponentWidget(),
-                      ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(0.0, -1.0),
+                          child: wrapWithModel(
+                            model: _model.drawerComponentModel,
+                            updateCallback: () => setState(() {}),
+                            child: DrawerComponentWidget(),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -94,7 +99,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             },
           ),
           title: Text(
-            'e-learning',
+            'e-Learning',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,

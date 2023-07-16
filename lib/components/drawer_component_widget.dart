@@ -77,7 +77,7 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget>
     return Align(
       alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(8.0, 24.0, 8.0, 8.0),
+        padding: EdgeInsetsDirectional.fromSTEB(2.0, 24.0, 2.0, 8.0),
         child: SingleChildScrollView(
           primary: false,
           child: Column(
@@ -241,38 +241,48 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget>
                   ),
                 ),
               ),
-              Container(
-                width: double.infinity,
-                height: 40.0,
-                decoration: BoxDecoration(
-                  color: Color(0xFFF1F4F8),
-                  borderRadius: BorderRadius.circular(12.0),
-                  shape: BoxShape.rectangle,
-                ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                        child: Icon(
-                          Icons.settings_outlined,
-                          color: Color(0xFF57636C),
-                          size: 16.0,
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed('ProfilePage');
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 40.0,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF1F4F8),
+                    borderRadius: BorderRadius.circular(12.0),
+                    shape: BoxShape.rectangle,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 8.0, 0.0),
+                          child: Icon(
+                            Icons.person,
+                            color: Color(0xFF57636C),
+                            size: 16.0,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Settings',
-                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Outfit',
-                              color: Color(0xFF57636C),
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.normal,
-                            ),
-                      ),
-                    ],
+                        Text(
+                          'Profile',
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'Outfit',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

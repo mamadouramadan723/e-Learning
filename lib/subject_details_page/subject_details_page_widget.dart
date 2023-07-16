@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -373,13 +374,10 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
               scaffoldKey.currentState!.openDrawer();
             },
           ),
-          title: Text(
+          title: AutoSizeText(
             '${FFAppState().classe} - ${FFAppState().cours} - ${widget.subjectName}',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Outfit',
-                  color: Colors.white,
-                  fontSize: 22.0,
-                ),
+            textAlign: TextAlign.justify,
+            style: FlutterFlowTheme.of(context).titleSmall,
           ),
           actions: [],
           centerTitle: false,

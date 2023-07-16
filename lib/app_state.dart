@@ -21,10 +21,10 @@ class FFAppState extends ChangeNotifier {
       _cours = prefs.getString('ff_cours') ?? _cours;
     });
     _safeInit(() {
-      _chapitre = prefs.getString('ff_chapitre') ?? _chapitre;
+      _chapter = prefs.getInt('ff_chapter') ?? _chapter;
     });
     _safeInit(() {
-      _lesson = prefs.getString('ff_lesson') ?? _lesson;
+      _lesson = prefs.getInt('ff_lesson') ?? _lesson;
     });
   }
 
@@ -49,18 +49,18 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_cours', _value);
   }
 
-  String _chapitre = 'TSEMathsAlgebre';
-  String get chapitre => _chapitre;
-  set chapitre(String _value) {
-    _chapitre = _value;
-    prefs.setString('ff_chapitre', _value);
+  int _chapter = 1;
+  int get chapter => _chapter;
+  set chapter(int _value) {
+    _chapter = _value;
+    prefs.setInt('ff_chapter', _value);
   }
 
-  String _lesson = 'dummy';
-  String get lesson => _lesson;
-  set lesson(String _value) {
+  int _lesson = 1;
+  int get lesson => _lesson;
+  set lesson(int _value) {
     _lesson = _value;
-    prefs.setString('ff_lesson', _value);
+    prefs.setInt('ff_lesson', _value);
   }
 }
 

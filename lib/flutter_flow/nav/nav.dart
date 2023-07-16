@@ -105,6 +105,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             subjectName: params.getParam('subjectName', ParamType.String),
             orderOfThelesson:
                 params.getParam('orderOfThelesson', ParamType.int),
+            orderOfTheChapter:
+                params.getParam('orderOfTheChapter', ParamType.int),
           ),
         ),
         FFRoute(

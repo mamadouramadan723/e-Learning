@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -15,11 +16,14 @@ class SubjectDetailsPageWidget extends StatefulWidget {
     Key? key,
     required this.subjectName,
     int? orderOfThelesson,
+    int? orderOfTheChapter,
   })  : this.orderOfThelesson = orderOfThelesson ?? 1,
+        this.orderOfTheChapter = orderOfTheChapter ?? 1,
         super(key: key);
 
   final String? subjectName;
   final int orderOfThelesson;
+  final int orderOfTheChapter;
 
   @override
   _SubjectDetailsPageWidgetState createState() =>
@@ -35,6 +39,14 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SubjectDetailsPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        FFAppState().chapter = 1;
+        FFAppState().lesson = 1;
+      });
+    });
   }
 
   @override
@@ -191,10 +203,15 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                           FFAppState()
                                                                               .cours)
                                                                   .where(
-                                                                      'chapitreId',
+                                                                      'orderOfTheChapter',
                                                                       isEqualTo:
                                                                           FFAppState()
-                                                                              .chapitre),
+                                                                              .chapter)
+                                                                  .where(
+                                                                      'orderOfTheLesson',
+                                                                      isEqualTo:
+                                                                          FFAppState()
+                                                                              .lesson),
                                                             ),
                                                             builder: (context,
                                                                 snapshot) {
@@ -242,37 +259,58 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                   final listViewLessonRecord =
                                                                       listViewLessonRecordList[
                                                                           listViewIndex];
-                                                                  return ListTile(
-                                                                    title: Text(
-                                                                      listViewLessonRecord
-                                                                          .title,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleLarge
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Outfit',
-                                                                            fontSize:
-                                                                                16.0,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                          ),
+                                                                  return InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      setState(
+                                                                          () {
+                                                                        FFAppState().chapter =
+                                                                            listViewLessonRecord.orderOfTheChapter;
+                                                                        FFAppState().lesson =
+                                                                            listViewLessonRecord.orderOfTheLesson;
+                                                                      });
+                                                                    },
+                                                                    child:
+                                                                        ListTile(
+                                                                      title:
+                                                                          Text(
+                                                                        listViewLessonRecord
+                                                                            .title,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleLarge
+                                                                            .override(
+                                                                              fontFamily: 'Outfit',
+                                                                              fontSize: 16.0,
+                                                                              fontWeight: FontWeight.normal,
+                                                                            ),
+                                                                      ),
+                                                                      trailing:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .arrow_forward_ios,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        size:
+                                                                            20.0,
+                                                                      ),
+                                                                      tileColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .secondaryBackground,
+                                                                      dense:
+                                                                          false,
                                                                     ),
-                                                                    trailing:
-                                                                        Icon(
-                                                                      Icons
-                                                                          .arrow_forward_ios,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      size:
-                                                                          20.0,
-                                                                    ),
-                                                                    tileColor: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                    dense:
-                                                                        false,
                                                                   );
                                                                 },
                                                               );
@@ -359,6 +397,13 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
                     child: StreamBuilder<List<LessonRecord>>(
                       stream: queryLessonRecord(
+                        queryBuilder: (lessonRecord) => lessonRecord
+                            .where('classeId', isEqualTo: FFAppState().classe)
+                            .where('coursId', isEqualTo: FFAppState().cours)
+                            .where('orderOfTheChapter',
+                                isEqualTo: widget.orderOfTheChapter)
+                            .where('orderOfTheLesson',
+                                isEqualTo: widget.orderOfThelesson),
                         singleRecord: true,
                       ),
                       builder: (context, snapshot) {

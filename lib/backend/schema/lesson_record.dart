@@ -56,15 +56,15 @@ class LessonRecord extends FirestoreRecord {
   String get coursId => _coursId ?? '';
   bool hasCoursId() => _coursId != null;
 
-  // "chapitreId" field.
-  String? _chapitreId;
-  String get chapitreId => _chapitreId ?? '';
-  bool hasChapitreId() => _chapitreId != null;
-
   // "orderOfTheLesson" field.
   int? _orderOfTheLesson;
   int get orderOfTheLesson => _orderOfTheLesson ?? 0;
   bool hasOrderOfTheLesson() => _orderOfTheLesson != null;
+
+  // "orderOfTheChapter" field.
+  int? _orderOfTheChapter;
+  int get orderOfTheChapter => _orderOfTheChapter ?? 0;
+  bool hasOrderOfTheChapter() => _orderOfTheChapter != null;
 
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
@@ -75,8 +75,8 @@ class LessonRecord extends FirestoreRecord {
     _title = snapshotData['title'] as String?;
     _classeId = snapshotData['classeId'] as String?;
     _coursId = snapshotData['coursId'] as String?;
-    _chapitreId = snapshotData['chapitreId'] as String?;
     _orderOfTheLesson = castToType<int>(snapshotData['orderOfTheLesson']);
+    _orderOfTheChapter = castToType<int>(snapshotData['orderOfTheChapter']);
   }
 
   static CollectionReference get collection =>
@@ -120,8 +120,8 @@ Map<String, dynamic> createLessonRecordData({
   String? title,
   String? classeId,
   String? coursId,
-  String? chapitreId,
   int? orderOfTheLesson,
+  int? orderOfTheChapter,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -132,8 +132,8 @@ Map<String, dynamic> createLessonRecordData({
       'title': title,
       'classeId': classeId,
       'coursId': coursId,
-      'chapitreId': chapitreId,
       'orderOfTheLesson': orderOfTheLesson,
+      'orderOfTheChapter': orderOfTheChapter,
     }.withoutNulls,
   );
 
@@ -154,8 +154,8 @@ class LessonRecordDocumentEquality implements Equality<LessonRecord> {
         e1?.title == e2?.title &&
         e1?.classeId == e2?.classeId &&
         e1?.coursId == e2?.coursId &&
-        e1?.chapitreId == e2?.chapitreId &&
-        e1?.orderOfTheLesson == e2?.orderOfTheLesson;
+        e1?.orderOfTheLesson == e2?.orderOfTheLesson &&
+        e1?.orderOfTheChapter == e2?.orderOfTheChapter;
   }
 
   @override
@@ -168,8 +168,8 @@ class LessonRecordDocumentEquality implements Equality<LessonRecord> {
         e?.title,
         e?.classeId,
         e?.coursId,
-        e?.chapitreId,
-        e?.orderOfTheLesson
+        e?.orderOfTheLesson,
+        e?.orderOfTheChapter
       ]);
 
   @override

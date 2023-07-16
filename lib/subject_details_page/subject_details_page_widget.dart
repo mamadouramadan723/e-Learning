@@ -287,7 +287,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                         SnackBar(
                                                                           content:
                                                                               Text(
-                                                                            'chapitre ${FFAppState().chapter.toString()} cours ${FFAppState().cours}',
+                                                                            'chapitre ${listCoursParChapitreLessonRecord.orderOfTheChapter.toString()} cours ${listCoursParChapitreLessonRecord.orderOfTheLesson.toString()}',
                                                                             style:
                                                                                 TextStyle(
                                                                               color: FlutterFlowTheme.of(context).primaryText,

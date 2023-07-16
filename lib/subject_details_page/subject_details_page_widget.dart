@@ -281,6 +281,24 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                         FFAppState().lesson =
                                                                             listCoursParChapitreLessonRecord.orderOfTheLesson;
                                                                       });
+                                                                      ScaffoldMessenger.of(
+                                                                              context)
+                                                                          .showSnackBar(
+                                                                        SnackBar(
+                                                                          content:
+                                                                              Text(
+                                                                            'chapitre ${FFAppState().chapter.toString()} cours ${FFAppState().cours}',
+                                                                            style:
+                                                                                TextStyle(
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                            ),
+                                                                          ),
+                                                                          duration:
+                                                                              Duration(milliseconds: 4000),
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).secondary,
+                                                                        ),
+                                                                      );
 
                                                                       context
                                                                           .pushNamed(

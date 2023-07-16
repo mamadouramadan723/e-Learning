@@ -281,6 +281,19 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                         FFAppState().lesson =
                                                                             listCoursParChapitreLessonRecord.orderOfTheLesson;
                                                                       });
+
+                                                                      context
+                                                                          .pushNamed(
+                                                                        'SubjectDetailsPage',
+                                                                        queryParameters:
+                                                                            {
+                                                                          'subjectName':
+                                                                              serializeParam(
+                                                                            '',
+                                                                            ParamType.String,
+                                                                          ),
+                                                                        }.withoutNulls,
+                                                                      );
                                                                     },
                                                                     child:
                                                                         ListTile(

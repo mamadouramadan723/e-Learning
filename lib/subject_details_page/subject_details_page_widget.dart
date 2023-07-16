@@ -111,7 +111,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                           .where('classeId',
                                               isEqualTo: FFAppState().classe)
                                           .where('coursId',
-                                              isEqualTo: FFAppState().cours),
+                                              isEqualTo: FFAppState().cours)
+                                          .orderBy('order'),
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
@@ -131,7 +132,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                     );
                                   }
                                   List<ChapitreRecord>
-                                      listViewChapitreRecordList =
+                                      listChapitresChapitreRecordList =
                                       snapshot.data!;
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
@@ -139,11 +140,11 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
                                     itemCount:
-                                        listViewChapitreRecordList.length,
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewChapitreRecord =
-                                          listViewChapitreRecordList[
-                                              listViewIndex];
+                                        listChapitresChapitreRecordList.length,
+                                    itemBuilder: (context, listChapitresIndex) {
+                                      final listChapitresChapitreRecord =
+                                          listChapitresChapitreRecordList[
+                                              listChapitresIndex];
                                       return Align(
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
@@ -162,7 +163,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                               initialExpanded: true,
                                               child: ExpandablePanel(
                                                 header: Text(
-                                                  listViewChapitreRecord.name,
+                                                  listChapitresChapitreRecord
+                                                      .name,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .displaySmall
@@ -208,11 +210,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                       isEqualTo:
                                                                           FFAppState()
                                                                               .chapter)
-                                                                  .where(
-                                                                      'orderOfTheLesson',
-                                                                      isEqualTo:
-                                                                          FFAppState()
-                                                                              .lesson),
+                                                                  .orderBy(
+                                                                      'orderOfTheLesson'),
                                                             ),
                                                             builder: (context,
                                                                 snapshot) {
@@ -238,7 +237,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                 );
                                                               }
                                                               List<LessonRecord>
-                                                                  listViewLessonRecordList =
+                                                                  listCoursParChapitreLessonRecordList =
                                                                   snapshot
                                                                       .data!;
                                                               return ListView
@@ -252,14 +251,14 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                 scrollDirection:
                                                                     Axis.vertical,
                                                                 itemCount:
-                                                                    listViewLessonRecordList
+                                                                    listCoursParChapitreLessonRecordList
                                                                         .length,
                                                                 itemBuilder:
                                                                     (context,
-                                                                        listViewIndex) {
-                                                                  final listViewLessonRecord =
-                                                                      listViewLessonRecordList[
-                                                                          listViewIndex];
+                                                                        listCoursParChapitreIndex) {
+                                                                  final listCoursParChapitreLessonRecord =
+                                                                      listCoursParChapitreLessonRecordList[
+                                                                          listCoursParChapitreIndex];
                                                                   return InkWell(
                                                                     splashColor:
                                                                         Colors
@@ -278,16 +277,16 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                       setState(
                                                                           () {
                                                                         FFAppState().chapter =
-                                                                            listViewLessonRecord.orderOfTheChapter;
+                                                                            listCoursParChapitreLessonRecord.orderOfTheChapter;
                                                                         FFAppState().lesson =
-                                                                            listViewLessonRecord.orderOfTheLesson;
+                                                                            listCoursParChapitreLessonRecord.orderOfTheLesson;
                                                                       });
                                                                     },
                                                                     child:
                                                                         ListTile(
                                                                       title:
                                                                           Text(
-                                                                        listViewLessonRecord
+                                                                        listCoursParChapitreLessonRecord
                                                                             .title,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleLarge
@@ -419,18 +418,18 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                             ),
                           );
                         }
-                        List<LessonRecord> htmlViewLessonRecordList =
+                        List<LessonRecord> htmlViewLessonLessonRecordList =
                             snapshot.data!;
                         // Return an empty Container when the item does not exist.
                         if (snapshot.data!.isEmpty) {
                           return Container();
                         }
-                        final htmlViewLessonRecord =
-                            htmlViewLessonRecordList.isNotEmpty
-                                ? htmlViewLessonRecordList.first
+                        final htmlViewLessonLessonRecord =
+                            htmlViewLessonLessonRecordList.isNotEmpty
+                                ? htmlViewLessonLessonRecordList.first
                                 : null;
                         return Html(
-                          data: htmlViewLessonRecord!.content,
+                          data: htmlViewLessonLessonRecord!.content,
                           onLinkTap: (url, context, attributes, element) =>
                               launchURL(url!),
                         );

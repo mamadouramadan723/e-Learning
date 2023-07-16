@@ -374,7 +374,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
             },
           ),
           title: Text(
-            widget.subjectName!,
+            '${FFAppState().classe} - ${FFAppState().cours} - ${widget.subjectName}',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Outfit',
                   color: Colors.white,

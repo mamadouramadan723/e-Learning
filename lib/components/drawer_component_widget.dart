@@ -1,10 +1,7 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'drawer_component_model.dart';
@@ -17,32 +14,8 @@ class DrawerComponentWidget extends StatefulWidget {
   _DrawerComponentWidgetState createState() => _DrawerComponentWidgetState();
 }
 
-class _DrawerComponentWidgetState extends State<DrawerComponentWidget>
-    with TickerProviderStateMixin {
+class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
   late DrawerComponentModel _model;
-
-  final animationsMap = {
-    'textOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 10.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -54,13 +27,6 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => DrawerComponentModel());
-
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
   }
 
   @override
@@ -98,8 +64,7 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget>
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
                               ),
-                    ).animateOnPageLoad(
-                        animationsMap['textOnPageLoadAnimation']!),
+                    ),
                   ],
                 ),
               ),

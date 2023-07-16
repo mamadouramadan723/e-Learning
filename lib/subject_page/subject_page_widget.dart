@@ -63,7 +63,7 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget> {
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 4.0, 0.0),
                 child: Container(
-                  width: 200.0,
+                  width: MediaQuery.sizeOf(context).width * 1.0,
                   height: 900.0,
                   decoration: BoxDecoration(
                     color: Color(0xFFF1F4F8),

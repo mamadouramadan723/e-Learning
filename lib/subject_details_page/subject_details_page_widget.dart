@@ -327,19 +327,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                             FFAppState().lesson =
                                                                                 listCoursParChapitreLessonRecord.orderOfTheLesson;
                                                                           });
-                                                                          ScaffoldMessenger.of(context)
-                                                                              .showSnackBar(
-                                                                            SnackBar(
-                                                                              content: Text(
-                                                                                'chapitre ${listCoursParChapitreLessonRecord.orderOfTheChapter.toString()} cours ${listCoursParChapitreLessonRecord.orderOfTheLesson.toString()}',
-                                                                                style: TextStyle(
-                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                ),
-                                                                              ),
-                                                                              duration: Duration(milliseconds: 4000),
-                                                                              backgroundColor: FlutterFlowTheme.of(context).secondary,
-                                                                            ),
-                                                                          );
+                                                                          Navigator.pop(
+                                                                              context);
                                                                         },
                                                                         child:
                                                                             ListTile(

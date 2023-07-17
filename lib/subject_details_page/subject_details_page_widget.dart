@@ -129,6 +129,11 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text(
+                                  '${FFAppState().classe} - ${FFAppState().cours}',
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                                 Divider(
                                   height: 12.0,
                                   thickness: 2.0,

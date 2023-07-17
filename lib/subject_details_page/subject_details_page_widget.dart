@@ -429,7 +429,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                 },
               ),
               title: AutoSizeText(
-                '${FFAppState().classe} - ${FFAppState().cours} - ${subjectDetailsPageLessonRecord?.title}',
+                subjectDetailsPageLessonRecord!.title,
                 textAlign: TextAlign.justify,
                 style: FlutterFlowTheme.of(context).titleSmall,
               ),

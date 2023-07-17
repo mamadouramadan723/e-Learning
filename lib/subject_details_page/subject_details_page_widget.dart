@@ -340,18 +340,6 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                               backgroundColor: FlutterFlowTheme.of(context).secondary,
                                                                             ),
                                                                           );
-
-                                                                          context
-                                                                              .pushNamed(
-                                                                            'SubjectDetailsPage',
-                                                                            queryParameters:
-                                                                                {
-                                                                              'subjectName': serializeParam(
-                                                                                '',
-                                                                                ParamType.String,
-                                                                              ),
-                                                                            }.withoutNulls,
-                                                                          );
                                                                         },
                                                                         child:
                                                                             ListTile(

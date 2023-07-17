@@ -99,6 +99,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
+          name: 'LoginPage',
+          path: '/loginPage',
+          builder: (context, params) => LoginPageWidget(),
+        ),
+        FFRoute(
           name: 'SubjectDetailsPage',
           path: '/subjectDetailsPage',
           builder: (context, params) => SubjectDetailsPageWidget(
@@ -108,11 +113,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             orderOfTheChapter:
                 params.getParam('orderOfTheChapter', ParamType.int),
           ),
-        ),
-        FFRoute(
-          name: 'LoginPage',
-          path: '/loginPage',
-          builder: (context, params) => LoginPageWidget(),
         ),
         FFRoute(
           name: 'PhoneLoginPage',

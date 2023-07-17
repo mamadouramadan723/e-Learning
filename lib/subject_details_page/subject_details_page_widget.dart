@@ -208,8 +208,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                   .where(
                                                                       'orderOfTheChapter',
                                                                       isEqualTo:
-                                                                          FFAppState()
-                                                                              .chapter)
+                                                                          listChapitresChapitreRecord
+                                                                              .order)
                                                                   .orderBy(
                                                                       'orderOfTheLesson'),
                                                             ),

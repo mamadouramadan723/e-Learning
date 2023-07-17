@@ -4,6 +4,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -156,7 +157,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    AutoSizeText(
                                       containerUserRecord!.displayName,
                                       style: FlutterFlowTheme.of(context)
                                           .headlineSmall
@@ -169,7 +170,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
-                                      child: Text(
+                                      child: AutoSizeText(
                                         containerUserRecord!.email,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
@@ -184,7 +185,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       ),
                                     ),
                                     if (loggedIn)
-                                      Text(
+                                      AutoSizeText(
                                         containerUserRecord!.uid,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,

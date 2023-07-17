@@ -431,7 +431,10 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
               title: AutoSizeText(
                 subjectDetailsPageLessonRecord!.title,
                 textAlign: TextAlign.justify,
-                style: FlutterFlowTheme.of(context).titleSmall,
+                style: FlutterFlowTheme.of(context).titleSmall.override(
+                      fontFamily: 'Readex Pro',
+                      fontSize: 12.0,
+                    ),
               ),
               actions: [],
               centerTitle: false,
@@ -443,14 +446,6 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                      child: Text(
-                        'Hello World',
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
-                    ),
                     Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(

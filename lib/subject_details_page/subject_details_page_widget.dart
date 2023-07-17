@@ -222,6 +222,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                 'Outfit',
                                                             color: Colors.black,
                                                             fontSize: 16.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
                                                           ),
                                                     ),
                                                     collapsed: Container(),
@@ -358,7 +360,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                             listCoursParChapitreLessonRecord.title,
                                                                             style: FlutterFlowTheme.of(context).titleLarge.override(
                                                                                   fontFamily: 'Outfit',
-                                                                                  fontSize: 16.0,
+                                                                                  fontSize: 12.0,
                                                                                   fontWeight: FontWeight.normal,
                                                                                 ),
                                                                           ),

@@ -439,49 +439,10 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
-                        child: StreamBuilder<List<LessonRecord>>(
-                          stream: queryLessonRecord(
-                            queryBuilder: (lessonRecord) => lessonRecord
-                                .where('classeId',
-                                    isEqualTo: FFAppState().classe)
-                                .where('coursId', isEqualTo: FFAppState().cours)
-                                .where('orderOfTheChapter',
-                                    isEqualTo: widget.orderOfTheChapter)
-                                .where('orderOfTheLesson',
-                                    isEqualTo: widget.orderOfThelesson),
-                            singleRecord: true,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                            List<LessonRecord> htmlViewLessonLessonRecordList =
-                                snapshot.data!;
-                            // Return an empty Container when the item does not exist.
-                            if (snapshot.data!.isEmpty) {
-                              return Container();
-                            }
-                            final htmlViewLessonLessonRecord =
-                                htmlViewLessonLessonRecordList.isNotEmpty
-                                    ? htmlViewLessonLessonRecordList.first
-                                    : null;
-                            return Html(
-                              data: htmlViewLessonLessonRecord!.content,
-                              onLinkTap: (url, context, attributes, element) =>
-                                  launchURL(url!),
-                            );
-                          },
+                        child: Html(
+                          data: subjectDetailsPageLessonRecord!.content,
+                          onLinkTap: (url, context, attributes, element) =>
+                              launchURL(url!),
                         ),
                       ),
                     ),

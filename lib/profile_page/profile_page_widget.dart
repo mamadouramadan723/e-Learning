@@ -78,6 +78,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   StreamBuilder<List<UserRecord>>(
                     stream: queryUserRecord(
@@ -114,18 +115,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 1.0,
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              offset: Offset(0.0, 0.0),
-                            )
-                          ],
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 12.0, 24.0, 12.0),
+                              4.0, 4.0, 4.0, 4.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [

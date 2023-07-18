@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:collection/collection.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -418,27 +417,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                             .where('orderOfTheLesson',
                                 isEqualTo: FFAppState().lesson),
                         singleRecord: true,
-                      )..listen((snapshot) async {
-                          List<LessonRecord> htmlViewLessonLessonRecordList =
-                              snapshot;
-                          if (_model.htmlViewLessonLessonRecordListPreviousSnapshot !=
-                                  null &&
-                              !const ListEquality(
-                                      LessonRecordDocumentEquality())
-                                  .equals(
-                                      htmlViewLessonLessonRecordList,
-                                      _model
-                                          .htmlViewLessonLessonRecordListPreviousSnapshot)) {
-                            setState(() {
-                              FFAppState().title =
-                                  htmlViewLessonLessonRecord!.title;
-                            });
-
-                            setState(() {});
-                          }
-                          _model.htmlViewLessonLessonRecordListPreviousSnapshot =
-                              snapshot;
-                        }),
+                      ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {

@@ -47,7 +47,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
         FFAppState().title = ' ';
         FFAppState().content = ' ';
       });
-      _model.myLesson = await queryLessonRecordOnce(
+      _model.myNewLesson = await queryLessonRecordOnce(
         queryBuilder: (lessonRecord) => lessonRecord
             .where('classeId', isEqualTo: FFAppState().classe)
             .where('coursId', isEqualTo: FFAppState().cours)
@@ -56,8 +56,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
         singleRecord: true,
       ).then((s) => s.firstOrNull);
       setState(() {
-        FFAppState().title = _model.myLesson!.title;
-        FFAppState().content = _model.myLesson!.content;
+        FFAppState().title = _model.myNewLesson!.title;
+        FFAppState().content = _model.myNewLesson!.content;
       });
     });
   }
@@ -317,8 +317,46 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                           listCoursParChapitreLessonRecord
                                                                               .orderOfTheLesson;
                                                                     });
+                                                                    _model.mySelectedLesson =
+                                                                        await queryLessonRecordOnce(
+                                                                      queryBuilder: (lessonRecord) => lessonRecord
+                                                                          .where(
+                                                                              'classeId',
+                                                                              isEqualTo: FFAppState()
+                                                                                  .classe)
+                                                                          .where(
+                                                                              'coursId',
+                                                                              isEqualTo: FFAppState()
+                                                                                  .cours)
+                                                                          .where(
+                                                                              'orderOfTheChapter',
+                                                                              isEqualTo: FFAppState()
+                                                                                  .chapter)
+                                                                          .where(
+                                                                              'orderOfTheLesson',
+                                                                              isEqualTo: FFAppState().lesson),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
+                                                                    setState(
+                                                                        () {
+                                                                      FFAppState()
+                                                                              .title =
+                                                                          _model
+                                                                              .mySelectedLesson!
+                                                                              .title;
+                                                                      FFAppState()
+                                                                              .content =
+                                                                          _model
+                                                                              .mySelectedLesson!
+                                                                              .content;
+                                                                    });
                                                                     Navigator.pop(
                                                                         context);
+
+                                                                    setState(
+                                                                        () {});
                                                                   },
                                                                   child:
                                                                       ListTile(

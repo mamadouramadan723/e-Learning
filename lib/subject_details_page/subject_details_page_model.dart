@@ -19,13 +19,16 @@ class SubjectDetailsPageModel extends FlutterFlowModel {
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Firestore Query - Query a collection] action in SubjectDetailsPage widget.
-  LessonRecord? myLesson;
+  LessonRecord? myNewLesson;
   // State field(s) for ListChapitres widget.
 
   PagingController<DocumentSnapshot?, ChapitreRecord>?
       listChapitresPagingController;
   Query? listChapitresPagingQuery;
   List<StreamSubscription?> listChapitresStreamSubscriptions = [];
+
+  // Stores action output result for [Firestore Query - Query a collection] action in TitreCours widget.
+  LessonRecord? mySelectedLesson;
 
   /// Initialization and disposal methods.
 

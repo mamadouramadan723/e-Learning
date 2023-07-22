@@ -460,7 +460,10 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
             },
           ),
           title: AutoSizeText(
-            FFAppState().title,
+            valueOrDefault<String>(
+              FFAppState().title,
+              'Aucune Leçon pour ce cours de cette classe',
+            ),
             textAlign: TextAlign.justify,
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Readex Pro',

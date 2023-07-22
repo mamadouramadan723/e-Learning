@@ -106,7 +106,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'SubjectDetailsPage',
           path: '/subjectDetailsPage',
-          builder: (context, params) => SubjectDetailsPageWidget(),
+          builder: (context, params) => SubjectDetailsPageWidget(
+            title: params.getParam('title', ParamType.String),
+          ),
         ),
         FFRoute(
           name: 'PhoneLoginPage',

@@ -68,6 +68,12 @@ class FFAppState extends ChangeNotifier {
   set title(String _value) {
     _title = _value;
   }
+
+  String _content = '';
+  String get content => _content;
+  set content(String _value) {
+    _content = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

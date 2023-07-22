@@ -56,7 +56,10 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
         singleRecord: true,
       ).then((s) => s.firstOrNull);
       setState(() {
-        FFAppState().title = _model.myNewLesson!.title;
+        FFAppState().title = valueOrDefault<String>(
+          _model.myNewLesson?.title,
+          'Pas de Leçon pour ce Cours de cette Classe',
+        );
         FFAppState().content = _model.myNewLesson!.content;
       });
     });

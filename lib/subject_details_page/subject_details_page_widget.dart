@@ -44,6 +44,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
       setState(() {
         FFAppState().chapter = 1;
         FFAppState().lesson = 1;
+        FFAppState().title = ' ';
+        FFAppState().content = ' ';
       });
       _model.myLesson = await queryLessonRecordOnce(
         queryBuilder: (lessonRecord) => lessonRecord

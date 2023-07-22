@@ -106,13 +106,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'SubjectDetailsPage',
           path: '/subjectDetailsPage',
-          builder: (context, params) => SubjectDetailsPageWidget(
-            subjectName: params.getParam('subjectName', ParamType.String),
-            orderOfThelesson:
-                params.getParam('orderOfThelesson', ParamType.int),
-            orderOfTheChapter:
-                params.getParam('orderOfTheChapter', ParamType.int),
-          ),
+          builder: (context, params) => SubjectDetailsPageWidget(),
         ),
         FFRoute(
           name: 'PhoneLoginPage',
@@ -312,15 +306,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/e-Learning.png',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;

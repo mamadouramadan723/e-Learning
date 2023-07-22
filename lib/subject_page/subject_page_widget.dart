@@ -135,8 +135,8 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          StreamBuilder<List<CoursRecord>>(
-                            stream: queryCoursRecord(
+                          FutureBuilder<List<CoursRecord>>(
+                            future: queryCoursRecordOnce(
                               queryBuilder: (coursRecord) => coursRecord.where(
                                   'classesforthissubject',
                                   arrayContains: widget.classOrder),
@@ -178,20 +178,11 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          setState(() {
-                                            FFAppState().cours =
-                                                listViewCoursRecord.id;
-                                          });
+                                          FFAppState().cours =
+                                              listViewCoursRecord.id;
 
-                                          context.pushNamed(
-                                            'SubjectDetailsPage',
-                                            queryParameters: {
-                                              'subjectName': serializeParam(
-                                                listViewCoursRecord.name,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
+                                          context
+                                              .pushNamed('SubjectDetailsPage');
                                         },
                                         child: Container(
                                           width: double.infinity,

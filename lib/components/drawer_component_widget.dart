@@ -269,8 +269,8 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                     children: [
                       Align(
                         alignment: AlignmentDirectional(0.0, 0.0),
-                        child: StreamBuilder<List<ClasseRecord>>(
-                          stream: queryClasseRecord(
+                        child: FutureBuilder<List<ClasseRecord>>(
+                          future: queryClasseRecordOnce(
                             queryBuilder: (classeRecord) =>
                                 classeRecord.orderBy('order'),
                           ),
@@ -308,10 +308,8 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      setState(() {
-                                        FFAppState().classe =
-                                            listViewClasseRecord.id;
-                                      });
+                                      FFAppState().classe =
+                                          listViewClasseRecord.id;
 
                                       context.pushNamed(
                                         'SubjectPage',

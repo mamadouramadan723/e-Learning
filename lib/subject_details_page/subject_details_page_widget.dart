@@ -346,9 +346,13 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                         () {
                                                                       FFAppState()
                                                                               .title =
-                                                                          _model
-                                                                              .mySelectedLesson!
-                                                                              .title;
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                        _model
+                                                                            .mySelectedLesson
+                                                                            ?.title,
+                                                                        'Aucune Leçon pour ce Cours de cette Classe',
+                                                                      );
                                                                       FFAppState()
                                                                               .content =
                                                                           _model

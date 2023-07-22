@@ -44,7 +44,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
       setState(() {
         FFAppState().chapter = 1;
         FFAppState().lesson = 1;
-        FFAppState().title = ' ';
+        FFAppState().title = 'Pas de Leçon pour ce Cours de cette Classe';
         FFAppState().content = ' ';
       });
       _model.myNewLesson = await queryLessonRecordOnce(
@@ -460,10 +460,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
             },
           ),
           title: AutoSizeText(
-            valueOrDefault<String>(
-              FFAppState().title,
-              'Aucuneeeee Leçon pour ce cours de cette classe',
-            ),
+            FFAppState().title,
             textAlign: TextAlign.justify,
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Readex Pro',

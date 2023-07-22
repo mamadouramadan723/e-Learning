@@ -53,18 +53,10 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
             .where('orderOfTheLesson', isEqualTo: FFAppState().lesson),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'chap ${FFAppState().chapter.toString()} - lesson ${_model.myLesson?.title}',
-            style: TextStyle(
-              color: FlutterFlowTheme.of(context).primaryText,
-            ),
-          ),
-          duration: Duration(milliseconds: 4000),
-          backgroundColor: FlutterFlowTheme.of(context).secondary,
-        ),
-      );
+      setState(() {
+        FFAppState().title = _model.myLesson!.title;
+        FFAppState().content = _model.myLesson!.content;
+      });
     });
   }
 
@@ -421,10 +413,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
             },
           ),
           title: AutoSizeText(
-            valueOrDefault<String>(
-              _model.myLesson?.title,
-              'Leçon',
-            ),
+            FFAppState().title,
             textAlign: TextAlign.justify,
             style: FlutterFlowTheme.of(context).titleSmall.override(
                   fontFamily: 'Readex Pro',

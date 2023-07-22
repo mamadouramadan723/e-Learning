@@ -66,11 +66,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
     return StreamBuilder<List<LessonRecord>>(
       stream: queryLessonRecord(
         queryBuilder: (lessonRecord) => lessonRecord
-            .where('classeId',
-                isEqualTo:
-                    FFAppState().classe != '' ? FFAppState().classe : null)
-            .where('coursId',
-                isEqualTo: FFAppState().cours != '' ? FFAppState().cours : null)
+            .where('classeId', isEqualTo: FFAppState().classe)
+            .where('coursId', isEqualTo: FFAppState().cours)
             .where('orderOfTheChapter', isEqualTo: FFAppState().chapter)
             .where('orderOfTheLesson', isEqualTo: FFAppState().lesson),
         singleRecord: true,

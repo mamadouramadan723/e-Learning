@@ -7,24 +7,22 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-// Set your widget name, define your parameter, and then add the
-// boilerplate code using the button on the right!
+import '/custom_code/widgets/index.dart';
+import '/flutter_flow/custom_functions.dart';
 import 'package:webviewx/webviewx.dart';
 
 class MyHtmlView extends StatelessWidget {
-  const MyHtmlView({Key? key, this.width, this.height, this.html})
-      : super(key: key);
+  const MyHtmlView({Key? key, this.width, this.height}) : super(key: key);
 
   final double? width;
   final double? height;
-  final String? html;
 
   @override
   Widget build(BuildContext context) {
     return WebViewX(
         width: width!,
         height: height!,
-        initialContent: html ?? '',
-        initialSourceType: SourceType.html);
+        initialContent: FFAppState().content ?? '',
+        initialSourceType: SourceType.HTML);
   }
 }

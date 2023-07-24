@@ -10,19 +10,19 @@ import 'package:flutter/material.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class WebViewXWidget extends StatelessWidget {
-  const WebViewXWidget({Key? key, this.width, this.height, this.html})
+  const WebViewXWidget({Key? key, this.width, this.height, this.content})
       : super(key: key);
 
   final double? width;
   final double? height;
-  final String? html;
+  final String? content;
 
   @override
   Widget build(BuildContext context) {
     return WebViewX(
         width: width!,
         height: height!,
-        initialContent: html ?? FFAppState().content,
+        initialContent: FFAppState().content,
         initialSourceType: SourceType.html);
   }
 }

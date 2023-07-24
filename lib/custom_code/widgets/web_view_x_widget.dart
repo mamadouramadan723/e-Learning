@@ -9,24 +9,44 @@ import 'package:flutter/material.dart';
 
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class WebViewXWidget extends StatelessWidget {
+class WebViewXWidget extends StatefulWidget {
   const WebViewXWidget({Key? key, this.width, this.height}) : super(key: key);
 
   final double? width;
   final double? height;
 
   @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<String>(
-      stream: FFAppState().contentStream, // Listen to content changes
-      initialData:
-          FFAppState().content, // Set initial data to FFAppState().content
-      builder: (context, snapshot) {
-        final String content = snapshot.data ?? ''; // Get the latest content
+  _WebViewXWidgetState createState() => _WebViewXWidgetState();
+}
 
+class _WebViewXWidgetState extends State<WebViewXWidget> {
+  final ValueNotifier<String> _contentNotifier = ValueNotifier('');
+
+  @override
+  void initState() {
+    super.initState();
+    _contentNotifier.value = FFAppState().content;
+    FFAppState().addListener(_onContentChanged);
+  }
+
+  @override
+  void dispose() {
+    FFAppState().removeListener(_onContentChanged);
+    super.dispose();
+  }
+
+  void _onContentChanged() {
+    _contentNotifier.value = FFAppState().content;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<String>(
+      valueListenable: _contentNotifier,
+      builder: (context, content, _) {
         return WebViewX(
-          width: width!,
-          height: height!,
+          width: widget.width!,
+          height: widget.height!,
           initialContent: content, // Use the latest content
           initialSourceType: SourceType.html,
         );

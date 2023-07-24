@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'package:flutter/foundation.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class WebViewXWidget extends StatefulWidget {
@@ -20,8 +21,7 @@ class WebViewXWidget extends StatefulWidget {
 }
 
 class _WebViewXWidgetState extends State<WebViewXWidget> {
-  final ValueNotifier<String> _contentNotifier =
-      ValueNotifier<String>('nothing here hhh');
+  final ValueNotifier<String> _contentNotifier = ValueNotifier<String>('');
 
   @override
   void initState() {
@@ -37,7 +37,9 @@ class _WebViewXWidgetState extends State<WebViewXWidget> {
   }
 
   void _onContentChange() {
-    _contentNotifier.value = FFAppState().content;
+    setState(() {
+      _contentNotifier.value = FFAppState().content;
+    });
   }
 
   @override

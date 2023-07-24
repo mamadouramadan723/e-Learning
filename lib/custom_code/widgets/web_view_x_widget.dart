@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class MyHtmlView extends StatelessWidget {
-  const MyHtmlView({Key? key, this.width, this.height, this.html})
+class WebViewXWidget extends StatelessWidget {
+  const WebViewXWidget({Key? key, this.width, this.height, this.html})
       : super(key: key);
 
   final double? width;

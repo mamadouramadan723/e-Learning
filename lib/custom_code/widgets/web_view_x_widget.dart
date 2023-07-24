@@ -7,47 +7,30 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:flutter/foundation.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class WebViewXWidget extends StatefulWidget {
-  const WebViewXWidget({Key? key, this.width, this.height, this.content})
-      : super(key: key);
+class WebViewXWidget extends StatelessWidget {
+  const WebViewXWidget({Key? key, this.width, this.height}) : super(key: key);
 
   final double? width;
   final double? height;
-  final String? content;
-
-  @override
-  _WebViewXWidgetState createState() => _WebViewXWidgetState();
-}
-
-class _WebViewXWidgetState extends State<WebViewXWidget> {
-  String? _currentContent;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentContent = widget.content;
-  }
-
-  @override
-  void didUpdateWidget(WebViewXWidget oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.content != _currentContent) {
-      setState(() {
-        _currentContent = widget.content;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-    return WebViewX(
-      width: widget.width!,
-      height: widget.height!,
-      initialContent: _currentContent,
-      initialSourceType: SourceType.html,
+    return StreamBuilder<String>(
+      stream: FFAppState().contentStream, // Listen to content changes
+      initialData:
+          FFAppState().content, // Set initial data to FFAppState().content
+      builder: (context, snapshot) {
+        final String content = snapshot.data ?? ''; // Get the latest content
+
+        return WebViewX(
+          width: width!,
+          height: height!,
+          initialContent: content, // Use the latest content
+          initialSourceType: SourceType.html,
+        );
+      },
     );
   }
 }

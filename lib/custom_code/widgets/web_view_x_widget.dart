@@ -20,7 +20,8 @@ class WebViewXWidget extends StatefulWidget {
 }
 
 class _WebViewXWidgetState extends State<WebViewXWidget> {
-  final ValueNotifier<String> _contentNotifier = ValueNotifier<String>('');
+  final ValueNotifier<String> _contentNotifier =
+      ValueNotifier<String>('nothing here hhh');
 
   @override
   void initState() {

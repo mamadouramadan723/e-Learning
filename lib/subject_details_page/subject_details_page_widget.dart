@@ -479,12 +479,33 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
               children: [
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Container(
-                    width: 100.0,
-                    height: 100.0,
-                    child: custom_widgets.WebViewXWidget(
-                      width: 100.0,
-                      height: 100.0,
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            FFAppState().content,
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: Duration(milliseconds: 4000),
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).secondary,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 1.0,
+                      child: custom_widgets.WebViewXWidget(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: MediaQuery.sizeOf(context).height * 1.0,
+                      ),
                     ),
                   ),
                 ),

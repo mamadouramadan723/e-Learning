@@ -9,20 +9,48 @@ import 'package:flutter/material.dart';
 
 import 'package:webviewx_plus/webviewx_plus.dart';
 
-class WebViewXWidget extends StatelessWidget {
-  const WebViewXWidget({Key? key, this.width, this.height, this.content})
-      : super(key: key);
+class WebViewXWidget extends StatefulWidget {
+  const WebViewXWidget({Key? key, this.width, this.height}) : super(key: key);
 
   final double? width;
   final double? height;
-  final String? content;
+
+  @override
+  _WebViewXWidgetState createState() => _WebViewXWidgetState();
+}
+
+class _WebViewXWidgetState extends State<WebViewXWidget> {
+  final ValueNotifier<String> _contentNotifier = ValueNotifier<String>('');
+
+  @override
+  void initState() {
+    super.initState();
+    _contentNotifier.value = FFAppState().content;
+    FFAppState().addListener(_onContentChange);
+  }
+
+  @override
+  void dispose() {
+    FFAppState().removeListener(_onContentChange);
+    super.dispose();
+  }
+
+  void _onContentChange() {
+    _contentNotifier.value = FFAppState().content;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return WebViewX(
-        width: width!,
-        height: height!,
-        initialContent: FFAppState().content,
-        initialSourceType: SourceType.html);
+    return ValueListenableBuilder<String>(
+      valueListenable: _contentNotifier,
+      builder: (context, content, _) {
+        return WebViewX(
+          width: widget.width!,
+          height: widget.height!,
+          initialContent: content,
+          initialSourceType: SourceType.html,
+        );
+      },
+    );
   }
 }

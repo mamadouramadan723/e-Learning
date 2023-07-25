@@ -62,6 +62,18 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
         );
         FFAppState().content = _model.myNewLesson!.content;
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'content : ${FFAppState().content}',
+            style: TextStyle(
+              color: FlutterFlowTheme.of(context).primaryText,
+            ),
+          ),
+          duration: Duration(milliseconds: 4000),
+          backgroundColor: FlutterFlowTheme.of(context).secondary,
+        ),
+      );
     });
   }
 

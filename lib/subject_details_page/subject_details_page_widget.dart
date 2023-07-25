@@ -502,6 +502,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                   child: custom_widgets.WebViewXWidget(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 1.0,
+                    content: FFAppState().content,
                   ),
                 ),
               ],

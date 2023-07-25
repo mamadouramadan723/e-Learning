@@ -41,11 +41,20 @@ class _WebViewXWidgetState extends State<WebViewXWidget> {
   void initState() {
     super.initState();
     _newContentValue = FFAppState().content;
+
+    //
+    // Subscribe to content changes and update the _newContentValue accordingly
+    _contentSubscription = FFAppState().contentStream.listen((content) {
+      setState(() {
+        _newContentValue = content;
+      });
+    });
   }
 
   @override
   void dispose() {
-    //TODO
+    _contentSubscription
+        ?.cancel(); // Cancel the subscription to avoid memory leaks
     super.dispose();
   }
 }

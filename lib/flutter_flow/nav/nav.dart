@@ -104,16 +104,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LoginPageWidget(),
         ),
         FFRoute(
+          name: 'PhoneLoginPage',
+          path: '/phoneLoginPage',
+          builder: (context, params) => PhoneLoginPageWidget(),
+        ),
+        FFRoute(
           name: 'SubjectDetailsPage',
           path: '/subjectDetailsPage',
           builder: (context, params) => SubjectDetailsPageWidget(
             title: params.getParam('title', ParamType.String),
           ),
-        ),
-        FFRoute(
-          name: 'PhoneLoginPage',
-          path: '/phoneLoginPage',
-          builder: (context, params) => PhoneLoginPageWidget(),
         ),
         FFRoute(
           name: 'ProfilePage',

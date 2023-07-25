@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 import '/custom_code/widgets/index.dart';
 import '/flutter_flow/custom_functions.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
+import 'package:webviewx/webviewx.dart';
 
 class WebViewXWidget extends StatefulWidget {
   const WebViewXWidget({Key? key, this.width, this.height}) : super(key: key);

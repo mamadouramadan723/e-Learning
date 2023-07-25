@@ -9,15 +9,6 @@ import 'package:flutter/material.dart';
 
 import 'package:webviewx/webviewx.dart';
 
-// Create a custom ValueNotifier
-class ContentNotifier extends ValueNotifier<String> {
-  ContentNotifier(String value) : super(value);
-
-  void updateContent() {
-    value = FFAppState().content;
-  }
-}
-
 class WebViewXWidget extends StatefulWidget {
   const WebViewXWidget({Key? key, this.width, this.height}) : super(key: key);
 
@@ -29,30 +20,41 @@ class WebViewXWidget extends StatefulWidget {
 }
 
 class _WebViewXWidgetState extends State<WebViewXWidget> {
-  late ContentNotifier _contentNotifier;
+  // Create a stream controller to listen to changes in FFAppState().content
+  final StreamController<String> _contentStreamController =
+      StreamController<String>();
 
   @override
   void initState() {
     super.initState();
-    _contentNotifier = ContentNotifier(FFAppState().content);
-    _contentNotifier.addListener(_contentNotifier.updateContent);
+    // Listen to changes in FFAppState().content and add them to the stream
+    FFAppState().addListener(_onContentChanged);
   }
 
   @override
   void dispose() {
-    _contentNotifier.removeListener(_contentNotifier.updateContent);
+    // Don't forget to dispose of the stream controller and remove the listener
+    _contentStreamController.close();
+    FFAppState().removeListener(_onContentChanged);
     super.dispose();
+  }
+
+  void _onContentChanged() {
+    // When content changes, add the new value to the stream
+    _contentStreamController.add(FFAppState().content);
   }
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<String>(
-      valueListenable: _contentNotifier,
-      builder: (context, content, _) {
+    return StreamBuilder<String>(
+      stream: _contentStreamController.stream,
+      initialData: FFAppState().content, // Set initial data
+      builder: (context, snapshot) {
+        // Use snapshot.data, which contains the latest value from the stream
         return WebViewX(
           width: widget.width!,
           height: widget.height!,
-          initialContent: content,
+          initialContent: snapshot.data!,
           initialSourceType: SourceType.html,
         );
       },

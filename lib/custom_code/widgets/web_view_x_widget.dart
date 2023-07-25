@@ -20,41 +20,34 @@ class WebViewXWidget extends StatefulWidget {
 }
 
 class _WebViewXWidgetState extends State<WebViewXWidget> {
-  // Create a stream controller to listen to changes in FFAppState().content
-  final StreamController<String> _contentStreamController =
-      StreamController<String>();
+  final ValueNotifier<String> _contentNotifier =
+      ValueNotifier(FFAppState().content);
 
   @override
   void initState() {
     super.initState();
-    // Listen to changes in FFAppState().content and add them to the stream
     FFAppState().addListener(_onContentChanged);
   }
 
   @override
   void dispose() {
-    // Don't forget to dispose of the stream controller and remove the listener
-    _contentStreamController.close();
     FFAppState().removeListener(_onContentChanged);
     super.dispose();
   }
 
   void _onContentChanged() {
-    // When content changes, add the new value to the stream
-    _contentStreamController.add(FFAppState().content);
+    _contentNotifier.value = FFAppState().content;
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<String>(
-      stream: _contentStreamController.stream,
-      initialData: FFAppState().content, // Set initial data
-      builder: (context, snapshot) {
-        // Use snapshot.data, which contains the latest value from the stream
+    return ValueListenableBuilder<String>(
+      valueListenable: _contentNotifier,
+      builder: (context, content, _) {
         return WebViewX(
           width: widget.width!,
           height: widget.height!,
-          initialContent: snapshot.data!,
+          initialContent: content,
           initialSourceType: SourceType.html,
         );
       },

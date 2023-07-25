@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'dart:async';
+
 import 'package:webviewx/webviewx.dart';
 
 class WebViewXWidget extends StatefulWidget {

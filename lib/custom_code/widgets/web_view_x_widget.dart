@@ -9,6 +9,15 @@ import 'package:flutter/material.dart';
 
 import 'package:webviewx/webviewx.dart';
 
+// Create a custom ValueNotifier
+class ContentNotifier extends ValueNotifier<String> {
+  ContentNotifier(String value) : super(value);
+
+  void updateContent() {
+    value = FFAppState().content;
+  }
+}
+
 class WebViewXWidget extends StatefulWidget {
   const WebViewXWidget({Key? key, this.width, this.height}) : super(key: key);
 
@@ -20,23 +29,19 @@ class WebViewXWidget extends StatefulWidget {
 }
 
 class _WebViewXWidgetState extends State<WebViewXWidget> {
-  final ValueNotifier<String> _contentNotifier =
-      ValueNotifier(FFAppState().content);
+  late ContentNotifier _contentNotifier;
 
   @override
   void initState() {
     super.initState();
-    _contentNotifier.addListener(_updateContent);
+    _contentNotifier = ContentNotifier(FFAppState().content);
+    _contentNotifier.addListener(_contentNotifier.updateContent);
   }
 
   @override
   void dispose() {
-    _contentNotifier.removeListener(_updateContent);
+    _contentNotifier.removeListener(_contentNotifier.updateContent);
     super.dispose();
-  }
-
-  void _updateContent() {
-    _contentNotifier.value = FFAppState().content;
   }
 
   @override

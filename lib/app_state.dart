@@ -69,7 +69,8 @@ class FFAppState extends ChangeNotifier {
     _title = _value;
   }
 
-  String _content = 'mycontent';
+  String _content =
+      '<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mroot><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></mroot><mo>*</mo><mi>sin</mi><mfenced><mrow><msup><mn>30</mn><mo>&#x2218;</mo></msup></mrow></mfenced></math>';
   String get content => _content;
   set content(String _value) {
     _content = _value;

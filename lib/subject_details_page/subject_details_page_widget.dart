@@ -342,8 +342,9 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
-                                                                    setState(
-                                                                        () {
+                                                                    FFAppState()
+                                                                        .update(
+                                                                            () {
                                                                       FFAppState()
                                                                               .title =
                                                                           valueOrDefault<

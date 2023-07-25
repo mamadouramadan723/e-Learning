@@ -42,6 +42,8 @@ class SubjectDetailsPageModel extends FlutterFlowModel {
 
   /// Action blocks are added here.
 
+  Future test(BuildContext context) async {}
+
   /// Additional helper methods are added here.
 
   PagingController<DocumentSnapshot?, ChapitreRecord>

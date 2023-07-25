@@ -69,7 +69,7 @@ class FFAppState extends ChangeNotifier {
     _title = _value;
   }
 
-  String _content = '';
+  String _content = 'mycontent';
   String get content => _content;
   set content(String _value) {
     _content = _value;

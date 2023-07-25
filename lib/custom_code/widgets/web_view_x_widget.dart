@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 import 'package:webviewx/webviewx.dart';
 
-class WebViewXWidget extends StatelessWidget {
+class WebViewXWidget extends StatefulWidget {
   const WebViewXWidget({
     Key? key,
     this.width,
@@ -22,11 +22,30 @@ class WebViewXWidget extends StatelessWidget {
   final String? content;
 
   @override
+  _WebViewXWidgetState createState() => _WebViewXWidgetState();
+}
+
+class _WebViewXWidgetState extends State<WebViewXWidget> {
+  late String _newContentValue;
+
+  @override
   Widget build(BuildContext context) {
     return WebViewX(
-        width: width!,
-        height: height!,
-        initialContent: content ?? '',
+        width: widget.width!,
+        height: widget.height!,
+        initialContent: _newContentValue ?? '',
         initialSourceType: SourceType.html);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _newContentValue = FFAppState().content;
+  }
+
+  @override
+  void dispose() {
+    //TODO
+    super.dispose();
   }
 }

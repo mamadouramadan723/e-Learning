@@ -41,7 +41,6 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
         FFAppState().lesson = 1;
         FFAppState().title = 'Pas de Leçon pour ce Cours de cette Classe';
         FFAppState().content = ' ';
-        FFAppState().url = '';
       });
       _model.myNewLesson = await queryLessonRecordOnce(
         queryBuilder: (lessonRecord) => lessonRecord
@@ -305,14 +304,17 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                           .transparent,
                                                                   onTap:
                                                                       () async {
-                                                                    FFAppState()
-                                                                            .chapter =
-                                                                        listCoursParChapitreLessonRecord
-                                                                            .orderOfTheChapter;
-                                                                    FFAppState()
-                                                                            .lesson =
-                                                                        listCoursParChapitreLessonRecord
-                                                                            .orderOfTheLesson;
+                                                                    setState(
+                                                                        () {
+                                                                      FFAppState()
+                                                                              .chapter =
+                                                                          listCoursParChapitreLessonRecord
+                                                                              .orderOfTheChapter;
+                                                                      FFAppState()
+                                                                              .lesson =
+                                                                          listCoursParChapitreLessonRecord
+                                                                              .orderOfTheLesson;
+                                                                    });
                                                                     _model.mySelectedLesson =
                                                                         await queryLessonRecordOnce(
                                                                       queryBuilder: (lessonRecord) => lessonRecord
@@ -335,8 +337,9 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
-                                                                    setState(
-                                                                        () {
+                                                                    FFAppState()
+                                                                        .update(
+                                                                            () {
                                                                       FFAppState()
                                                                               .title =
                                                                           valueOrDefault<
@@ -351,10 +354,6 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                           _model
                                                                               .mySelectedLesson!
                                                                               .content;
-                                                                      FFAppState()
-                                                                              .url =
-                                                                          FFAppState()
-                                                                              .url;
                                                                     });
                                                                     Navigator.pop(
                                                                         context);
@@ -475,12 +474,15 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 FlutterFlowWebView(
-                  content: FFAppState().url,
-                  bypass: true,
+                  content: valueOrDefault<String>(
+                    FFAppState().content,
+                    'test',
+                  ),
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 1.0,
                   verticalScroll: true,
                   horizontalScroll: false,
+                  html: true,
                 ),
               ],
             ),

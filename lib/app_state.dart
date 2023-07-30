@@ -74,12 +74,6 @@ class FFAppState extends ChangeNotifier {
   set content(String _value) {
     _content = _value;
   }
-
-  String _url = '';
-  String get url => _url;
-  set url(String _value) {
-    _url = _value;
-  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -17,12 +17,7 @@ import 'subject_details_page_model.dart';
 export 'subject_details_page_model.dart';
 
 class SubjectDetailsPageWidget extends StatefulWidget {
-  const SubjectDetailsPageWidget({
-    Key? key,
-    this.title,
-  }) : super(key: key);
-
-  final String? title;
+  const SubjectDetailsPageWidget({Key? key}) : super(key: key);
 
   @override
   _SubjectDetailsPageWidgetState createState() =>
@@ -479,15 +474,12 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 FlutterFlowWebView(
-                  content: valueOrDefault<String>(
-                    FFAppState().content,
-                    'test',
-                  ),
+                  content: FFAppState().url,
+                  bypass: true,
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 1.0,
                   verticalScroll: true,
                   horizontalScroll: false,
-                  html: true,
                 ),
               ],
             ),

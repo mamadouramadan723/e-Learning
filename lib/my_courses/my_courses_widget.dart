@@ -306,7 +306,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         percent:
                                                             dataTableMyLessonRecord
                                                                 .percentageAchievement,
-                                                        lineHeight: 12.0,
+                                                        lineHeight: 14.0,
                                                         animation: true,
                                                         progressColor:
                                                             FlutterFlowTheme.of(
@@ -315,7 +315,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .accent4,
+                                                                .alternate,
                                                         center: Text(
                                                           '${(dataTableMyLessonRecord.percentageAchievement * 100).toString()} %',
                                                           style: FlutterFlowTheme

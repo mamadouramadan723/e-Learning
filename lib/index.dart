@@ -11,3 +11,4 @@ export '/reset_password_page/reset_password_page_widget.dart'
     show ResetPasswordPageWidget;
 export '/s_m_s_code_verification_page/s_m_s_code_verification_page_widget.dart'
     show SMSCodeVerificationPageWidget;
+export '/my_courses/my_courses_widget.dart' show MyCoursesWidget;

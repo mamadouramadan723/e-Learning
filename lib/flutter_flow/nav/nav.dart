@@ -128,6 +128,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'SMSCodeVerificationPage',
           path: '/sMSCodeVerificationPage',
           builder: (context, params) => SMSCodeVerificationPageWidget(),
+        ),
+        FFRoute(
+          name: 'MyCourses',
+          path: '/myCourses',
+          builder: (context, params) => MyCoursesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

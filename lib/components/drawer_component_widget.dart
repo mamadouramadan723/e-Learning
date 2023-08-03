@@ -93,39 +93,46 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                   borderRadius: BorderRadius.circular(12.0),
                   shape: BoxShape.rectangle,
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Icon(
-                            Icons.inbox_rounded,
-                            color: Color(0xFF4B39EF),
-                            size: 20.0,
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              'Mes Cours',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    color: Color(0xFF4B39EF),
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('MyCourses');
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Icon(
+                              Icons.inbox_rounded,
+                              color: Color(0xFF151515),
+                              size: 20.0,
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                'Dashboard',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Container(
@@ -147,7 +154,7 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                         children: [
                           Icon(
                             Icons.date_range_rounded,
-                            color: Color(0xFF57636C),
+                            color: Color(0xFF151515),
                             size: 20.0,
                           ),
                           Padding(
@@ -159,9 +166,9 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                                   .bodySmall
                                   .override(
                                     fontFamily: 'Outfit',
-                                    color: Color(0xFF57636C),
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
+                                    color: Color(0xFF151515),
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                             ),
                           ),
@@ -189,18 +196,23 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                         child: Icon(
                           Icons.check_box,
-                          color: Color(0xFF57636C),
+                          color: Color(0xFF151515),
                           size: 16.0,
                         ),
                       ),
-                      Text(
-                        'Completed Tasks',
-                        style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Outfit',
-                              color: Color(0xFF57636C),
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.normal,
-                            ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                        child: Text(
+                          'Tâches',
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'Outfit',
+                                    color: Color(0xFF151515),
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
                       ),
                     ],
                   ),
@@ -232,19 +244,23 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                               0.0, 0.0, 8.0, 0.0),
                           child: Icon(
                             Icons.person,
-                            color: Color(0xFF57636C),
+                            color: Color(0xFF151515),
                             size: 16.0,
                           ),
                         ),
-                        Text(
-                          'Profile',
-                          style:
-                              FlutterFlowTheme.of(context).bodySmall.override(
-                                    fontFamily: 'Outfit',
-                                    color: Color(0xFF57636C),
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Profile',
+                            style:
+                                FlutterFlowTheme.of(context).bodySmall.override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF151515),
+                                      fontSize: 12.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                          ),
                         ),
                       ],
                     ),

@@ -177,164 +177,171 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                         List<CoursRecord>
                                             dataTableCoursRecordList =
                                             snapshot.data!;
-                                        return Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  1.0,
-                                          child: DataTable2(
-                                            columns: [
-                                              DataColumn2(
-                                                label: DefaultTextStyle.merge(
-                                                  softWrap: true,
-                                                  child: AutoSizeText(
-                                                    'Cours',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: 12.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                              DataColumn2(
-                                                label: DefaultTextStyle.merge(
-                                                  softWrap: true,
-                                                  child: AutoSizeText(
-                                                    'Inscription',
-                                                    textAlign:
-                                                        TextAlign.justify,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall,
-                                                  ),
-                                                ),
-                                              ),
-                                              DataColumn2(
-                                                label: DefaultTextStyle.merge(
-                                                  softWrap: true,
-                                                  child: Text(
-                                                    'Status',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: 12.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                            rows: dataTableCoursRecordList
-                                                .mapIndexed((dataTableIndex,
-                                                        dataTableCoursRecord) =>
-                                                    [
-                                                      Text(
-                                                        dataTableCoursRecord
-                                                            .name,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              fontSize: 12.0,
-                                                            ),
-                                                      ),
-                                                      AutoSizeText(
-                                                        dataTableCoursRecord
-                                                            .description,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              fontSize: 12.0,
-                                                            ),
-                                                      ),
-                                                      Container(
-                                                        width: double.infinity,
-                                                        height: double.infinity,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      2.0),
-                                                        ),
-                                                        child:
-                                                            LinearPercentIndicator(
-                                                          percent: 0.5,
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  1.0,
-                                                          lineHeight: 12.0,
-                                                          animation: true,
-                                                          progressColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .accent4,
-                                                          center: Text(
-                                                            '60%',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  fontSize:
-                                                                      12.0,
-                                                                ),
+                                        return SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            child: DataTable2(
+                                              columns: [
+                                                DataColumn2(
+                                                  label: DefaultTextStyle.merge(
+                                                    softWrap: true,
+                                                    child: AutoSizeText(
+                                                      'Cours',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            fontSize: 12.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
                                                           ),
-                                                          barRadius:
-                                                              Radius.circular(
-                                                                  25.0),
-                                                          padding:
-                                                              EdgeInsets.zero,
+                                                    ),
+                                                  ),
+                                                ),
+                                                DataColumn2(
+                                                  label: DefaultTextStyle.merge(
+                                                    softWrap: true,
+                                                    child: AutoSizeText(
+                                                      'Inscription',
+                                                      textAlign:
+                                                          TextAlign.justify,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall,
+                                                    ),
+                                                  ),
+                                                ),
+                                                DataColumn2(
+                                                  label: DefaultTextStyle.merge(
+                                                    softWrap: true,
+                                                    child: Text(
+                                                      'Status',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Readex Pro',
+                                                            fontSize: 12.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                              rows: dataTableCoursRecordList
+                                                  .mapIndexed((dataTableIndex,
+                                                          dataTableCoursRecord) =>
+                                                      [
+                                                        Text(
+                                                          dataTableCoursRecord
+                                                              .name,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                fontSize: 12.0,
+                                                              ),
                                                         ),
-                                                      ),
-                                                    ]
-                                                        .map((c) => DataCell(c))
-                                                        .toList())
-                                                .map((e) => DataRow(cells: e))
-                                                .toList(),
-                                            headingRowColor:
-                                                MaterialStateProperty.all(
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryBackground,
+                                                        AutoSizeText(
+                                                          dataTableCoursRecord
+                                                              .description,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Readex Pro',
+                                                                fontSize: 12.0,
+                                                              ),
+                                                        ),
+                                                        Container(
+                                                          width:
+                                                              double.infinity,
+                                                          height:
+                                                              double.infinity,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        2.0),
+                                                          ),
+                                                          child:
+                                                              LinearPercentIndicator(
+                                                            percent: 0.5,
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                1.0,
+                                                            lineHeight: 12.0,
+                                                            animation: true,
+                                                            progressColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                            backgroundColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent4,
+                                                            center: Text(
+                                                              '60%',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Outfit',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
+                                                            ),
+                                                            barRadius:
+                                                                Radius.circular(
+                                                                    25.0),
+                                                            padding:
+                                                                EdgeInsets.zero,
+                                                          ),
+                                                        ),
+                                                      ]
+                                                          .map((c) =>
+                                                              DataCell(c))
+                                                          .toList())
+                                                  .map((e) => DataRow(cells: e))
+                                                  .toList(),
+                                              headingRowColor:
+                                                  MaterialStateProperty.all(
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
+                                              ),
+                                              headingRowHeight: 48.0,
+                                              dataRowColor:
+                                                  MaterialStateProperty.all(
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                              ),
+                                              dataRowHeight: 48.0,
+                                              border: TableBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                              ),
+                                              dividerThickness: 1.0,
+                                              showBottomBorder: true,
+                                              minWidth: 49.0,
                                             ),
-                                            headingRowHeight: 48.0,
-                                            dataRowColor:
-                                                MaterialStateProperty.all(
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                            ),
-                                            dataRowHeight: 48.0,
-                                            border: TableBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
-                                            dividerThickness: 1.0,
-                                            showBottomBorder: true,
-                                            minWidth: 49.0,
                                           ),
                                         );
                                       },

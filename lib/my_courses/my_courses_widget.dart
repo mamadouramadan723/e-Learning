@@ -284,7 +284,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                                   fontFamily:
                                                                       'Readex Pro',
                                                                   fontSize:
-                                                                      12.0,
+                                                                      10.0,
                                                                 ),
                                                           );
                                                         },
@@ -293,13 +293,15 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         dataTableMyLessonRecord
                                                             .subscriptionDate!
                                                             .toString(),
+                                                        textAlign:
+                                                            TextAlign.justify,
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
                                                             .override(
                                                               fontFamily:
                                                                   'Readex Pro',
-                                                              fontSize: 12.0,
+                                                              fontSize: 10.0,
                                                             ),
                                                       ),
                                                       LinearPercentIndicator(

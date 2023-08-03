@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/drawer_component_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
@@ -154,8 +155,14 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         4.0, 0.0, 4.0, 0.0),
-                                    child: StreamBuilder<List<CoursRecord>>(
-                                      stream: queryCoursRecord(),
+                                    child: StreamBuilder<List<MyLessonRecord>>(
+                                      stream: queryMyLessonRecord(
+                                        queryBuilder: (myLessonRecord) =>
+                                            myLessonRecord
+                                                .where('userId',
+                                                    isEqualTo: currentUserUid)
+                                                .orderBy('subscriptionDate'),
+                                      ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
                                         if (!snapshot.hasData) {
@@ -174,8 +181,8 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                             ),
                                           );
                                         }
-                                        List<CoursRecord>
-                                            dataTableCoursRecordList =
+                                        List<MyLessonRecord>
+                                            dataTableMyLessonRecordList =
                                             snapshot.data!;
                                         return Container(
                                           width:
@@ -233,25 +240,59 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                 ),
                                               ),
                                             ],
-                                            rows: dataTableCoursRecordList
+                                            rows: dataTableMyLessonRecordList
                                                 .mapIndexed((dataTableIndex,
-                                                        dataTableCoursRecord) =>
+                                                        dataTableMyLessonRecord) =>
                                                     [
-                                                      Text(
-                                                        dataTableCoursRecord
-                                                            .name,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Readex Pro',
-                                                              fontSize: 12.0,
-                                                            ),
+                                                      FutureBuilder<
+                                                          LessonRecord>(
+                                                        future: LessonRecord
+                                                            .getDocumentOnce(
+                                                                dataTableMyLessonRecord
+                                                                    .lessonId!),
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 50.0,
+                                                                height: 50.0,
+                                                                child:
+                                                                    CircularProgressIndicator(
+                                                                  valueColor:
+                                                                      AlwaysStoppedAnimation<
+                                                                          Color>(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                          final textLessonRecord =
+                                                              snapshot.data!;
+                                                          return Text(
+                                                            textLessonRecord
+                                                                .title,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  fontSize:
+                                                                      12.0,
+                                                                ),
+                                                          );
+                                                        },
                                                       ),
                                                       AutoSizeText(
-                                                        dataTableCoursRecord
-                                                            .description,
+                                                        dataTableMyLessonRecord
+                                                            .subscriptionDate!
+                                                            .toString(),
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -262,7 +303,9 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                             ),
                                                       ),
                                                       LinearPercentIndicator(
-                                                        percent: 1.0,
+                                                        percent:
+                                                            dataTableMyLessonRecord
+                                                                .percentageAchievement,
                                                         lineHeight: 12.0,
                                                         animation: true,
                                                         progressColor:
@@ -274,14 +317,14 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                                     context)
                                                                 .accent4,
                                                         center: Text(
-                                                          '60%',
+                                                          '${(dataTableMyLessonRecord.percentageAchievement * 100).toString()} %',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .headlineSmall
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                fontSize: 12.0,
+                                                                fontSize: 10.0,
                                                               ),
                                                         ),
                                                         barRadius:

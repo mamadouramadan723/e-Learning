@@ -39,6 +39,20 @@
           "order": "ASCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "myLesson",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "userId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "subscriptionDate",
+          "order": "ASCENDING"
+        }
+      ]
     }
   ]
 }

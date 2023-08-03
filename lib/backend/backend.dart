@@ -10,6 +10,7 @@ import 'schema/classe_record.dart';
 import 'schema/cours_record.dart';
 import 'schema/chapitre_record.dart';
 import 'schema/lesson_record.dart';
+import 'schema/my_lesson_record.dart';
 import 'dart:async';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -24,6 +25,7 @@ export 'schema/classe_record.dart';
 export 'schema/cours_record.dart';
 export 'schema/chapitre_record.dart';
 export 'schema/lesson_record.dart';
+export 'schema/my_lesson_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -415,6 +417,84 @@ Future<FFFirestorePage<LessonRecord>> queryLessonRecordPage({
       return page;
     });
 
+/// Functions to query MyLessonRecords (as a Stream and as a Future).
+Future<int> queryMyLessonRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      MyLessonRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<MyLessonRecord>> queryMyLessonRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      MyLessonRecord.collection,
+      MyLessonRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<MyLessonRecord>> queryMyLessonRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      MyLessonRecord.collection,
+      MyLessonRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+Future<FFFirestorePage<MyLessonRecord>> queryMyLessonRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+  required PagingController<DocumentSnapshot?, MyLessonRecord> controller,
+  List<StreamSubscription?>? streamSubscriptions,
+}) =>
+    queryCollectionPage(
+      MyLessonRecord.collection,
+      MyLessonRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    ).then((page) {
+      controller.appendPage(
+        page.data,
+        page.nextPageMarker,
+      );
+      if (isStream) {
+        final streamSubscription =
+            (page.dataStream)?.listen((List<MyLessonRecord> data) {
+          data.forEach((item) {
+            final itemIndexes = controller.itemList!
+                .asMap()
+                .map((k, v) => MapEntry(v.reference.id, k));
+            final index = itemIndexes[item.reference.id];
+            final items = controller.itemList!;
+            if (index != null) {
+              items.replaceRange(index, index + 1, [item]);
+              controller.itemList = {
+                for (var item in items) item.reference: item
+              }.values.toList();
+            }
+          });
+        });
+        streamSubscriptions?.add(streamSubscription);
+      }
+      return page;
+    });
+
 Future<int> queryCollectionCount(
   Query collection, {
   Query Function(Query)? queryBuilder,
@@ -539,4 +619,31 @@ Future<FFFirestorePage<T>> queryCollectionPage<T>(
   final dataStream = docSnapshotStream?.map(getDocs);
   final nextPageToken = docSnapshot.docs.isEmpty ? null : docSnapshot.docs.last;
   return FFFirestorePage(data, dataStream, nextPageToken);
+}
+
+// Creates a Firestore document representing the logged in user if it doesn't yet exist
+Future maybeCreateUser(User user) async {
+  final userRecord = UserRecord.collection.doc(user.uid);
+  final userExists = await userRecord.get().then((u) => u.exists);
+  if (userExists) {
+    currentUserDocument = await UserRecord.getDocumentOnce(userRecord);
+    return;
+  }
+
+  final userData = createUserRecordData(
+    email: user.email,
+    displayName: user.displayName,
+    photoUrl: user.photoURL,
+    uid: user.uid,
+    phoneNumber: user.phoneNumber,
+    createdTime: getCurrentTimestamp,
+  );
+
+  await userRecord.set(userData);
+  currentUserDocument = UserRecord.getDocumentFromData(userData, userRecord);
+}
+
+Future updateUserDocument({String? email}) async {
+  await currentUserDocument?.reference
+      .update(createUserRecordData(email: email));
 }

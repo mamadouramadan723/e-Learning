@@ -99,6 +99,9 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    if (Navigator.of(context).canPop()) {
+                      context.pop();
+                    }
                     context.pushNamed('MyCourses');
                   },
                   child: Row(

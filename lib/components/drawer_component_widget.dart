@@ -99,10 +99,7 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    if (Navigator.of(context).canPop()) {
-                      context.pop();
-                    }
-                    context.pushNamed('MyCourses');
+                    context.goNamed('MyCourses');
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
@@ -190,7 +187,7 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                   shape: BoxShape.rectangle,
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [

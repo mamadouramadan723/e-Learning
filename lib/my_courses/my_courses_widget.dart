@@ -276,7 +276,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         ),
                                                         child:
                                                             LinearPercentIndicator(
-                                                          percent: 0.5,
+                                                          percent: 1.0,
                                                           lineHeight: 12.0,
                                                           animation: true,
                                                           progressColor:
@@ -301,7 +301,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                           ),
                                                           barRadius:
                                                               Radius.circular(
-                                                                  25.0),
+                                                                  10.0),
                                                           padding:
                                                               EdgeInsets.zero,
                                                         ),

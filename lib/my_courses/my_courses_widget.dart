@@ -261,50 +261,34 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                               fontSize: 12.0,
                                                             ),
                                                       ),
-                                                      Container(
-                                                        width: double.infinity,
-                                                        height: double.infinity,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
+                                                      LinearPercentIndicator(
+                                                        percent: 1.0,
+                                                        lineHeight: 12.0,
+                                                        animation: true,
+                                                        progressColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent4,
+                                                        center: Text(
+                                                          '60%',
+                                                          style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      2.0),
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                fontSize: 12.0,
+                                                              ),
                                                         ),
-                                                        child:
-                                                            LinearPercentIndicator(
-                                                          percent: 1.0,
-                                                          lineHeight: 12.0,
-                                                          animation: true,
-                                                          progressColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
-                                                          backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .accent4,
-                                                          center: Text(
-                                                            '60%',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Outfit',
-                                                                  fontSize:
-                                                                      12.0,
-                                                                ),
-                                                          ),
-                                                          barRadius:
-                                                              Radius.circular(
-                                                                  10.0),
-                                                          padding:
-                                                              EdgeInsets.zero,
-                                                        ),
+                                                        barRadius:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        padding:
+                                                            EdgeInsets.zero,
                                                       ),
                                                     ]
                                                         .map((c) => DataCell(c))

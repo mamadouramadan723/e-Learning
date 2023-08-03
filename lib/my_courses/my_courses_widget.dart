@@ -1,8 +1,11 @@
+import '/backend/backend.dart';
 import '/components/drawer_component_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -145,7 +148,132 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                           children: [
                             Column(
                               mainAxisSize: MainAxisSize.max,
-                              children: [],
+                              children: [
+                                Expanded(
+                                  child: StreamBuilder<List<CoursRecord>>(
+                                    stream: queryCoursRecord(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<CoursRecord>
+                                          dataTableCoursRecordList =
+                                          snapshot.data!;
+                                      return DataTable2(
+                                        columns: [
+                                          DataColumn2(
+                                            label: DefaultTextStyle.merge(
+                                              softWrap: true,
+                                              child: AutoSizeText(
+                                                'Cours',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 12.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                          DataColumn2(
+                                            label: DefaultTextStyle.merge(
+                                              softWrap: true,
+                                              child: AutoSizeText(
+                                                'Inscription',
+                                                textAlign: TextAlign.justify,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall,
+                                              ),
+                                            ),
+                                          ),
+                                          DataColumn2(
+                                            label: DefaultTextStyle.merge(
+                                              softWrap: true,
+                                              child: Text(
+                                                'Status',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 12.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                        rows: dataTableCoursRecordList
+                                            .mapIndexed((dataTableIndex,
+                                                    dataTableCoursRecord) =>
+                                                [
+                                                  Text(
+                                                    dataTableCoursRecord.name,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                  Text(
+                                                    dataTableCoursRecord
+                                                        .description,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                  Text(
+                                                    dataTableIndex.toString(),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ]
+                                                    .map((c) => DataCell(c))
+                                                    .toList())
+                                            .map((e) => DataRow(cells: e))
+                                            .toList(),
+                                        headingRowColor:
+                                            MaterialStateProperty.all(
+                                          FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                        ),
+                                        headingRowHeight: 56.0,
+                                        dataRowColor: MaterialStateProperty.all(
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                        dataRowHeight: 56.0,
+                                        border: TableBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                        ),
+                                        dividerThickness: 1.0,
+                                        showBottomBorder: true,
+                                        minWidth: 49.0,
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
                             Column(
                               mainAxisSize: MainAxisSize.max,

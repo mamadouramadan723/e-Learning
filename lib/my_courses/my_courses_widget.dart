@@ -277,11 +277,6 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         child:
                                                             LinearPercentIndicator(
                                                           percent: 0.5,
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  0.35,
                                                           lineHeight: 12.0,
                                                           animation: true,
                                                           progressColor:

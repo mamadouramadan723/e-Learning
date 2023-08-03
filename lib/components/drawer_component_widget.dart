@@ -191,14 +191,10 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                        child: Icon(
-                          Icons.check_box,
-                          color: Color(0xFF151515),
-                          size: 16.0,
-                        ),
+                      Icon(
+                        Icons.check_box,
+                        color: Color(0xFF151515),
+                        size: 16.0,
                       ),
                       Padding(
                         padding:
@@ -239,14 +235,10 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 8.0, 0.0),
-                          child: Icon(
-                            Icons.person,
-                            color: Color(0xFF151515),
-                            size: 16.0,
-                          ),
+                        Icon(
+                          Icons.person,
+                          color: Color(0xFF151515),
+                          size: 16.0,
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(

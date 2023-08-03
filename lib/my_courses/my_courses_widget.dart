@@ -195,8 +195,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                   softWrap: true,
                                                   child: AutoSizeText(
                                                     'Cours',
-                                                    textAlign:
-                                                        TextAlign.justify,
+                                                    textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelSmall,
@@ -208,8 +207,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                   softWrap: true,
                                                   child: AutoSizeText(
                                                     'Inscription',
-                                                    textAlign:
-                                                        TextAlign.justify,
+                                                    textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelSmall
@@ -227,8 +225,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                   softWrap: true,
                                                   child: AutoSizeText(
                                                     'Status',
-                                                    textAlign:
-                                                        TextAlign.justify,
+                                                    textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelSmall,
@@ -273,8 +270,8 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                           return AutoSizeText(
                                                             textLessonRecord
                                                                 .title,
-                                                            textAlign: TextAlign
-                                                                .justify,
+                                                            textAlign:
+                                                                TextAlign.start,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -292,7 +289,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                             .subscriptionDate!
                                                             .toString(),
                                                         textAlign:
-                                                            TextAlign.justify,
+                                                            TextAlign.start,
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium

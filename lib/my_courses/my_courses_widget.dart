@@ -195,16 +195,11 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                   softWrap: true,
                                                   child: AutoSizeText(
                                                     'Cours',
+                                                    textAlign:
+                                                        TextAlign.justify,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: 12.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                        .labelSmall,
                                                   ),
                                                 ),
                                               ),
@@ -217,25 +212,26 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         TextAlign.justify,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelSmall,
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
                                                   ),
                                                 ),
                                               ),
                                               DataColumn2(
                                                 label: DefaultTextStyle.merge(
                                                   softWrap: true,
-                                                  child: Text(
+                                                  child: AutoSizeText(
                                                     'Status',
+                                                    textAlign:
+                                                        TextAlign.justify,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Readex Pro',
-                                                          fontSize: 12.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
+                                                        .labelSmall,
                                                   ),
                                                 ),
                                               ),
@@ -274,9 +270,11 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                           }
                                                           final textLessonRecord =
                                                               snapshot.data!;
-                                                          return Text(
+                                                          return AutoSizeText(
                                                             textLessonRecord
                                                                 .title,
+                                                            textAlign: TextAlign
+                                                                .justify,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium

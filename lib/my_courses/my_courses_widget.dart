@@ -183,6 +183,9 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 1.0,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                1.0,
                                             child: DataTable2(
                                               columns: [
                                                 DataColumn2(
@@ -301,13 +304,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                               '60%',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .headlineSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Outfit',
-                                                                    fontSize:
-                                                                        12.0,
-                                                                  ),
+                                                                  .titleLarge,
                                                             ),
                                                             barRadius:
                                                                 Radius.circular(

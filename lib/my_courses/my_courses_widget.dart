@@ -165,7 +165,8 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                             myCoursesRecord
                                                 .where('userId',
                                                     isEqualTo: currentUserUid)
-                                                .orderBy('subscriptionDate'),
+                                                .orderBy('subscriptionDate',
+                                                    descending: true),
                                       ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.

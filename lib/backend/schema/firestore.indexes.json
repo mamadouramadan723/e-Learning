@@ -50,7 +50,7 @@
         },
         {
           "fieldPath": "subscriptionDate",
-          "order": "ASCENDING"
+          "order": "DESCENDING"
         }
       ]
     }

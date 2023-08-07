@@ -8,8 +8,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class MyLessonRecord extends FirestoreRecord {
-  MyLessonRecord._(
+class MyCoursesRecord extends FirestoreRecord {
+  MyCoursesRecord._(
     DocumentReference reference,
     Map<String, dynamic> data,
   ) : super(reference, data) {
@@ -31,86 +31,86 @@ class MyLessonRecord extends FirestoreRecord {
   double get percentageAchievement => _percentageAchievement ?? 0.0;
   bool hasPercentageAchievement() => _percentageAchievement != null;
 
-  // "lessonId" field.
-  DocumentReference? _lessonId;
-  DocumentReference? get lessonId => _lessonId;
-  bool hasLessonId() => _lessonId != null;
+  // "courseId" field.
+  DocumentReference? _courseId;
+  DocumentReference? get courseId => _courseId;
+  bool hasCourseId() => _courseId != null;
 
   void _initializeFields() {
     _userId = snapshotData['userId'] as String?;
     _subscriptionDate = snapshotData['subscriptionDate'] as DateTime?;
     _percentageAchievement =
         castToType<double>(snapshotData['percentageAchievement']);
-    _lessonId = snapshotData['lessonId'] as DocumentReference?;
+    _courseId = snapshotData['courseId'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('myLesson');
+      FirebaseFirestore.instance.collection('myCourses');
 
-  static Stream<MyLessonRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => MyLessonRecord.fromSnapshot(s));
+  static Stream<MyCoursesRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => MyCoursesRecord.fromSnapshot(s));
 
-  static Future<MyLessonRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => MyLessonRecord.fromSnapshot(s));
+  static Future<MyCoursesRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => MyCoursesRecord.fromSnapshot(s));
 
-  static MyLessonRecord fromSnapshot(DocumentSnapshot snapshot) =>
-      MyLessonRecord._(
+  static MyCoursesRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      MyCoursesRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static MyLessonRecord getDocumentFromData(
+  static MyCoursesRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      MyLessonRecord._(reference, mapFromFirestore(data));
+      MyCoursesRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'MyLessonRecord(reference: ${reference.path}, data: $snapshotData)';
+      'MyCoursesRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is MyLessonRecord &&
+      other is MyCoursesRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createMyLessonRecordData({
+Map<String, dynamic> createMyCoursesRecordData({
   String? userId,
   DateTime? subscriptionDate,
   double? percentageAchievement,
-  DocumentReference? lessonId,
+  DocumentReference? courseId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'userId': userId,
       'subscriptionDate': subscriptionDate,
       'percentageAchievement': percentageAchievement,
-      'lessonId': lessonId,
+      'courseId': courseId,
     }.withoutNulls,
   );
 
   return firestoreData;
 }
 
-class MyLessonRecordDocumentEquality implements Equality<MyLessonRecord> {
-  const MyLessonRecordDocumentEquality();
+class MyCoursesRecordDocumentEquality implements Equality<MyCoursesRecord> {
+  const MyCoursesRecordDocumentEquality();
 
   @override
-  bool equals(MyLessonRecord? e1, MyLessonRecord? e2) {
+  bool equals(MyCoursesRecord? e1, MyCoursesRecord? e2) {
     return e1?.userId == e2?.userId &&
         e1?.subscriptionDate == e2?.subscriptionDate &&
         e1?.percentageAchievement == e2?.percentageAchievement &&
-        e1?.lessonId == e2?.lessonId;
+        e1?.courseId == e2?.courseId;
   }
 
   @override
-  int hash(MyLessonRecord? e) => const ListEquality().hash(
-      [e?.userId, e?.subscriptionDate, e?.percentageAchievement, e?.lessonId]);
+  int hash(MyCoursesRecord? e) => const ListEquality().hash(
+      [e?.userId, e?.subscriptionDate, e?.percentageAchievement, e?.courseId]);
 
   @override
-  bool isValidKey(Object? o) => o is MyLessonRecord;
+  bool isValidKey(Object? o) => o is MyCoursesRecord;
 }

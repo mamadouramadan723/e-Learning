@@ -10,7 +10,7 @@ import 'schema/classe_record.dart';
 import 'schema/cours_record.dart';
 import 'schema/chapitre_record.dart';
 import 'schema/lesson_record.dart';
-import 'schema/my_lesson_record.dart';
+import 'schema/my_courses_record.dart';
 import 'dart:async';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -25,7 +25,7 @@ export 'schema/classe_record.dart';
 export 'schema/cours_record.dart';
 export 'schema/chapitre_record.dart';
 export 'schema/lesson_record.dart';
-export 'schema/my_lesson_record.dart';
+export 'schema/my_courses_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -417,53 +417,53 @@ Future<FFFirestorePage<LessonRecord>> queryLessonRecordPage({
       return page;
     });
 
-/// Functions to query MyLessonRecords (as a Stream and as a Future).
-Future<int> queryMyLessonRecordCount({
+/// Functions to query MyCoursesRecords (as a Stream and as a Future).
+Future<int> queryMyCoursesRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      MyLessonRecord.collection,
+      MyCoursesRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<MyLessonRecord>> queryMyLessonRecord({
+Stream<List<MyCoursesRecord>> queryMyCoursesRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      MyLessonRecord.collection,
-      MyLessonRecord.fromSnapshot,
+      MyCoursesRecord.collection,
+      MyCoursesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<MyLessonRecord>> queryMyLessonRecordOnce({
+Future<List<MyCoursesRecord>> queryMyCoursesRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      MyLessonRecord.collection,
-      MyLessonRecord.fromSnapshot,
+      MyCoursesRecord.collection,
+      MyCoursesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
-Future<FFFirestorePage<MyLessonRecord>> queryMyLessonRecordPage({
+Future<FFFirestorePage<MyCoursesRecord>> queryMyCoursesRecordPage({
   Query Function(Query)? queryBuilder,
   DocumentSnapshot? nextPageMarker,
   required int pageSize,
   required bool isStream,
-  required PagingController<DocumentSnapshot?, MyLessonRecord> controller,
+  required PagingController<DocumentSnapshot?, MyCoursesRecord> controller,
   List<StreamSubscription?>? streamSubscriptions,
 }) =>
     queryCollectionPage(
-      MyLessonRecord.collection,
-      MyLessonRecord.fromSnapshot,
+      MyCoursesRecord.collection,
+      MyCoursesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,
@@ -475,7 +475,7 @@ Future<FFFirestorePage<MyLessonRecord>> queryMyLessonRecordPage({
       );
       if (isStream) {
         final streamSubscription =
-            (page.dataStream)?.listen((List<MyLessonRecord> data) {
+            (page.dataStream)?.listen((List<MyCoursesRecord> data) {
           data.forEach((item) {
             final itemIndexes = controller.itemList!
                 .asMap()

@@ -41,7 +41,7 @@
       ]
     },
     {
-      "collectionGroup": "myLesson",
+      "collectionGroup": "myCourses",
       "queryScope": "COLLECTION",
       "fields": [
         {

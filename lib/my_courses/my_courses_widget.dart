@@ -155,10 +155,10 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         4.0, 0.0, 4.0, 0.0),
-                                    child: StreamBuilder<List<MyLessonRecord>>(
-                                      stream: queryMyLessonRecord(
-                                        queryBuilder: (myLessonRecord) =>
-                                            myLessonRecord
+                                    child: StreamBuilder<List<MyCoursesRecord>>(
+                                      stream: queryMyCoursesRecord(
+                                        queryBuilder: (myCoursesRecord) =>
+                                            myCoursesRecord
                                                 .where('userId',
                                                     isEqualTo: currentUserUid)
                                                 .orderBy('subscriptionDate'),
@@ -181,8 +181,8 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                             ),
                                           );
                                         }
-                                        List<MyLessonRecord>
-                                            dataTableMyLessonRecordList =
+                                        List<MyCoursesRecord>
+                                            dataTableMyCoursesRecordList =
                                             snapshot.data!;
                                         return Container(
                                           width:
@@ -233,16 +233,16 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                 ),
                                               ),
                                             ],
-                                            rows: dataTableMyLessonRecordList
+                                            rows: dataTableMyCoursesRecordList
                                                 .mapIndexed((dataTableIndex,
-                                                        dataTableMyLessonRecord) =>
+                                                        dataTableMyCoursesRecord) =>
                                                     [
                                                       FutureBuilder<
-                                                          LessonRecord>(
-                                                        future: LessonRecord
+                                                          CoursRecord>(
+                                                        future: CoursRecord
                                                             .getDocumentOnce(
-                                                                dataTableMyLessonRecord
-                                                                    .lessonId!),
+                                                                dataTableMyCoursesRecord
+                                                                    .courseId!),
                                                         builder: (context,
                                                             snapshot) {
                                                           // Customize what your widget looks like when it's loading.
@@ -265,11 +265,11 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                               ),
                                                             );
                                                           }
-                                                          final textLessonRecord =
+                                                          final textCoursRecord =
                                                               snapshot.data!;
                                                           return AutoSizeText(
-                                                            textLessonRecord
-                                                                .title,
+                                                            textCoursRecord
+                                                                .name,
                                                             textAlign:
                                                                 TextAlign.start,
                                                             style: FlutterFlowTheme
@@ -285,7 +285,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         },
                                                       ),
                                                       AutoSizeText(
-                                                        dataTableMyLessonRecord
+                                                        dataTableMyCoursesRecord
                                                             .subscriptionDate!
                                                             .toString(),
                                                         textAlign:
@@ -301,7 +301,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                       ),
                                                       LinearPercentIndicator(
                                                         percent:
-                                                            dataTableMyLessonRecord
+                                                            dataTableMyCoursesRecord
                                                                 .percentageAchievement,
                                                         lineHeight: 14.0,
                                                         animation: true,
@@ -314,7 +314,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                                     context)
                                                                 .alternate,
                                                         center: Text(
-                                                          '${(dataTableMyLessonRecord.percentageAchievement * 100).toString()} %',
+                                                          '${(dataTableMyCoursesRecord.percentageAchievement * 100).toString()} %',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .headlineSmall

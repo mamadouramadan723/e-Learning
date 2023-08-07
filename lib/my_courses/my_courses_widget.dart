@@ -219,6 +219,10 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         ),
                                                   ),
                                                 ),
+                                                fixedWidth:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.5,
                                               ),
                                               DataColumn2(
                                                 label: DefaultTextStyle.merge(

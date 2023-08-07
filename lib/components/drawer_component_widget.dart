@@ -101,8 +101,10 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                   onTap: () async {
                     logFirebaseEvent('DRAWER_COMPONENT_Row_zgg3syzj_ON_TAP');
                     logFirebaseEvent('Row_navigate_to');
-
-                    context.goNamed('MyCourses');
+                    if (Navigator.of(context).canPop()) {
+                      context.pop();
+                    }
+                    context.pushNamed('MyCourses');
                   },
                   child: Row(
                     mainAxisSize: MainAxisSize.max,

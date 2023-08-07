@@ -198,7 +198,12 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelSmall,
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 10.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ),
@@ -214,6 +219,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         .override(
                                                           fontFamily:
                                                               'Readex Pro',
+                                                          fontSize: 10.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
@@ -232,7 +238,12 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .labelSmall,
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          fontSize: 10.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ),

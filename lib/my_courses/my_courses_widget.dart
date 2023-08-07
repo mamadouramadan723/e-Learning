@@ -286,7 +286,7 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                       ),
                                                       AutoSizeText(
                                                         dateTimeFormat(
-                                                            'd/M/y',
+                                                            'relative',
                                                             dataTableMyCoursesRecord
                                                                 .subscriptionDate!),
                                                         textAlign:

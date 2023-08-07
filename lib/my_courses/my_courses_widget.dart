@@ -300,10 +300,9 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
                                                         },
                                                       ),
                                                       AutoSizeText(
-                                                        dateTimeFormat(
-                                                            'd/M/y',
-                                                            dataTableMyCoursesRecord
-                                                                .subscriptionDate!),
+                                                        dataTableMyCoursesRecord
+                                                            .subscriptionDate!
+                                                            .toString(),
                                                         textAlign:
                                                             TextAlign.start,
                                                         style: FlutterFlowTheme

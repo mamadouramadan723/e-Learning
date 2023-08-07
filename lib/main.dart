@@ -12,6 +12,8 @@ import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
+import 'package:flutter/foundation.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
@@ -24,6 +26,10 @@ void main() async {
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
+
+  if (!kIsWeb) {
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  }
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
@@ -49,8 +55,6 @@ class _MyAppState extends State<MyApp> {
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
-  final authUserSub = authenticatedUserStream.listen((_) {});
-
   @override
   void initState() {
     super.initState();
@@ -63,13 +67,6 @@ class _MyAppState extends State<MyApp> {
       Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
-  }
-
-  @override
-  void dispose() {
-    authUserSub.cancel();
-
-    super.dispose();
   }
 
   void setLocale(String language) {

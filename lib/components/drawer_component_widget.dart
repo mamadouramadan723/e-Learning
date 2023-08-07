@@ -99,6 +99,9 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent('DRAWER_COMPONENT_Row_zgg3syzj_ON_TAP');
+                    logFirebaseEvent('Row_navigate_to');
+
                     context.goNamed('MyCourses');
                   },
                   child: Row(
@@ -220,6 +223,9 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  logFirebaseEvent('DRAWER_COMPONENT_contentView_1_ON_TAP');
+                  logFirebaseEvent('contentView_1_navigate_to');
+
                   context.pushNamed('ProfilePage');
                 },
                 child: Container(
@@ -316,8 +322,13 @@ class _DrawerComponentWidgetState extends State<DrawerComponentWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'DRAWER_COMPONENT_ListTile_gk8c2yig_ON_TA');
+                                      logFirebaseEvent(
+                                          'ListTile_update_app_state');
                                       FFAppState().classe =
                                           listViewClasseRecord.id;
+                                      logFirebaseEvent('ListTile_navigate_to');
 
                                       context.pushNamed(
                                         'SubjectPage',

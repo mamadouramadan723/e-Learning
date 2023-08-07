@@ -29,11 +29,15 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
     super.initState();
     _model = createModel(context, () => ProfilePageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ProfilePage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('PROFILE_ProfilePage_ON_INIT_STATE');
       if (loggedIn) {
         return;
       }
+
+      logFirebaseEvent('ProfilePage_navigate_to');
 
       context.pushNamed('LoginPage');
     });
@@ -206,6 +210,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'PROFILE_PAGE_PAGE_isLightMode_ON_TAP');
+                          logFirebaseEvent(
+                              'isLightMode_set_dark_mode_settings');
                           setDarkModeSetting(context, ThemeMode.dark);
                         },
                         child: Container(
@@ -289,6 +297,9 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'PROFILE_PAGE_PAGE_isDarkMode_ON_TAP');
+                          logFirebaseEvent('isDarkMode_set_dark_mode_settings');
                           setDarkModeSetting(context, ThemeMode.light);
                         },
                         child: Container(
@@ -489,11 +500,15 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
+                            logFirebaseEvent(
+                                'PROFILE_PAGE_PAGE_LOG_OUT_BTN_ON_TAP');
                             if (loggedIn) {
+                              logFirebaseEvent('Button_auth');
                               GoRouter.of(context).prepareAuthEvent();
                               await authManager.signOut();
                               GoRouter.of(context).clearRedirectLocation();
 
+                              logFirebaseEvent('Button_show_snack_bar');
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -508,6 +523,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       FlutterFlowTheme.of(context).secondary,
                                 ),
                               );
+                              logFirebaseEvent('Button_navigate_to');
 
                               context.pushNamedAuth(
                                 'HomePage',
@@ -523,6 +539,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
 
                               return;
                             } else {
+                              logFirebaseEvent('Button_navigate_to');
+
                               context.pushNamedAuth(
                                   'LoginPage', context.mounted);
 

@@ -33,6 +33,8 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SubjectPageModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'SubjectPage'});
   }
 
   @override
@@ -92,6 +94,8 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
+              logFirebaseEvent('SUBJECT_PAGE_PAGE_menu_ICN_ON_TAP');
+              logFirebaseEvent('IconButton_drawer');
               scaffoldKey.currentState!.openDrawer();
             },
           ),
@@ -178,8 +182,14 @@ class _SubjectPageWidgetState extends State<SubjectPageWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'SUBJECT_Container_dfueb6k7_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Container_update_app_state');
                                           FFAppState().cours =
                                               listViewCoursRecord.id;
+                                          logFirebaseEvent(
+                                              'Container_navigate_to');
 
                                           context
                                               .pushNamed('SubjectDetailsPage');

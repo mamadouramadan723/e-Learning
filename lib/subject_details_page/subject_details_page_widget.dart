@@ -34,14 +34,19 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
     super.initState();
     _model = createModel(context, () => SubjectDetailsPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'SubjectDetailsPage'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SUBJECT_DETAILS_SubjectDetailsPage_ON_IN');
+      logFirebaseEvent('SubjectDetailsPage_update_app_state');
       setState(() {
         FFAppState().chapter = 1;
         FFAppState().lesson = 1;
         FFAppState().title = 'Pas de Leçon pour ce Cours de cette Classe';
         FFAppState().content = ' ';
       });
+      logFirebaseEvent('SubjectDetailsPage_firestore_query');
       _model.myNewLesson = await queryLessonRecordOnce(
         queryBuilder: (lessonRecord) => lessonRecord
             .where('classeId', isEqualTo: FFAppState().classe)
@@ -50,6 +55,7 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
             .where('orderOfTheLesson', isEqualTo: FFAppState().lesson),
         singleRecord: true,
       ).then((s) => s.firstOrNull);
+      logFirebaseEvent('SubjectDetailsPage_update_app_state');
       setState(() {
         FFAppState().title = valueOrDefault<String>(
           _model.myNewLesson?.title,
@@ -304,6 +310,10 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                           .transparent,
                                                                   onTap:
                                                                       () async {
+                                                                    logFirebaseEvent(
+                                                                        'SUBJECT_DETAILS_TitreCours_ON_TAP');
+                                                                    logFirebaseEvent(
+                                                                        'TitreCours_update_app_state');
                                                                     setState(
                                                                         () {
                                                                       FFAppState()
@@ -315,6 +325,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                           listCoursParChapitreLessonRecord
                                                                               .orderOfTheLesson;
                                                                     });
+                                                                    logFirebaseEvent(
+                                                                        'TitreCours_firestore_query');
                                                                     _model.mySelectedLesson =
                                                                         await queryLessonRecordOnce(
                                                                       queryBuilder: (lessonRecord) => lessonRecord
@@ -337,6 +349,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                           true,
                                                                     ).then((s) =>
                                                                             s.firstOrNull);
+                                                                    logFirebaseEvent(
+                                                                        'TitreCours_update_app_state');
                                                                     FFAppState()
                                                                         .update(
                                                                             () {
@@ -355,6 +369,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
                                                                               .mySelectedLesson!
                                                                               .content;
                                                                     });
+                                                                    logFirebaseEvent(
+                                                                        'TitreCours_close_dialog,_drawer,_etc');
                                                                     Navigator.pop(
                                                                         context);
 
@@ -452,6 +468,8 @@ class _SubjectDetailsPageWidgetState extends State<SubjectDetailsPageWidget> {
               size: 24.0,
             ),
             onPressed: () async {
+              logFirebaseEvent('SUBJECT_DETAILS_dehaze_ICN_ON_TAP');
+              logFirebaseEvent('IconButton_drawer');
               scaffoldKey.currentState!.openDrawer();
             },
           ),

@@ -27,6 +27,8 @@ class _SMSCodeVerificationPageWidgetState
     super.initState();
     _model = createModel(context, () => SMSCodeVerificationPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'SMSCodeVerificationPage'});
     _model.sMSCodeController ??= TextEditingController();
   }
 
@@ -112,6 +114,8 @@ class _SMSCodeVerificationPageWidgetState
               ),
               FFButtonWidget(
                 onPressed: () async {
+                  logFirebaseEvent('S_M_S_CODE_VERIFICATION_SMSCodeValidatio');
+                  logFirebaseEvent('SMSCodeValidation_auth');
                   GoRouter.of(context).prepareAuthEvent();
                   final smsCodeVal = _model.sMSCodeController.text;
                   if (smsCodeVal == null || smsCodeVal.isEmpty) {
@@ -129,6 +133,8 @@ class _SMSCodeVerificationPageWidgetState
                   if (phoneVerifiedUser == null) {
                     return;
                   }
+
+                  logFirebaseEvent('SMSCodeValidation_navigate_to');
 
                   context.pushNamedAuth('HomePage', context.mounted);
                 },

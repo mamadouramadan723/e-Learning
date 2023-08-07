@@ -94,6 +94,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'SubjectPage',
           path: '/subjectPage',
+          requireAuth: true,
           builder: (context, params) => SubjectPageWidget(
             classOrder: params.getParam('classOrder', ParamType.int),
             name: params.getParam('name', ParamType.String),
@@ -112,11 +113,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'SubjectDetailsPage',
           path: '/subjectDetailsPage',
+          requireAuth: true,
           builder: (context, params) => SubjectDetailsPageWidget(),
         ),
         FFRoute(
           name: 'ProfilePage',
           path: '/profilePage',
+          requireAuth: true,
           builder: (context, params) => ProfilePageWidget(),
         ),
         FFRoute(
@@ -132,6 +135,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MyCourses',
           path: '/myCourses',
+          requireAuth: true,
           builder: (context, params) => MyCoursesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

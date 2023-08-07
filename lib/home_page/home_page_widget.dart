@@ -24,6 +24,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
   }
 
   @override
@@ -87,6 +89,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               size: 24.0,
             ),
             onPressed: () async {
+              logFirebaseEvent('HOME_PAGE_PAGE_menu_ICN_ON_TAP');
+              logFirebaseEvent('IconButton_drawer');
               scaffoldKey.currentState!.openDrawer();
             },
           ),

@@ -26,6 +26,8 @@ class _ResetPasswordPageWidgetState extends State<ResetPasswordPageWidget> {
     super.initState();
     _model = createModel(context, () => ResetPasswordPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'ResetPasswordPage'});
     _model.emailController ??= TextEditingController();
   }
 
@@ -111,6 +113,8 @@ class _ResetPasswordPageWidgetState extends State<ResetPasswordPageWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
+                  logFirebaseEvent('RESET_PASSWORD_SEND_MAIL\n_BTN_ON_TAP');
+                  logFirebaseEvent('Button_auth');
                   if (_model.emailController.text.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -125,6 +129,7 @@ class _ResetPasswordPageWidgetState extends State<ResetPasswordPageWidget> {
                     email: _model.emailController.text,
                     context: context,
                   );
+                  logFirebaseEvent('Button_navigate_to');
 
                   context.pushNamed('LoginPage');
                 },

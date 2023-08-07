@@ -26,6 +26,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
     super.initState();
     _model = createModel(context, () => LoginPageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'LoginPage'});
     _model.emailLoginController ??= TextEditingController();
     _model.passwordLoginController ??= TextEditingController();
     _model.nameController ??= TextEditingController();
@@ -243,6 +244,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         0.0, 24.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
+                                        logFirebaseEvent(
+                                            'LOGIN_PAGE_PAGE_Login_ON_TAP');
+                                        logFirebaseEvent('Login_auth');
                                         GoRouter.of(context).prepareAuthEvent();
 
                                         final user =
@@ -256,11 +260,15 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         }
 
                                         if (currentUserEmailVerified) {
+                                          logFirebaseEvent('Login_navigate_to');
+
                                           context.pushNamedAuth(
                                               'HomePage', context.mounted);
 
                                           return;
                                         } else {
+                                          logFirebaseEvent(
+                                              'Login_show_snack_bar');
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                             SnackBar(
@@ -317,6 +325,10 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        logFirebaseEvent(
+                                            'LOGIN_PAGE_PAGE_Text_9qt8fh46_ON_TAP');
+                                        logFirebaseEvent('Text_navigate_to');
+
                                         context.pushNamed(
                                           'ResetPasswordPage',
                                           extra: <String, dynamic>{
@@ -356,6 +368,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       children: [
                                         FFButtonWidget(
                                           onPressed: () async {
+                                            logFirebaseEvent(
+                                                'LOGIN_PAGE_PAGE__BTN_ON_TAP');
+                                            logFirebaseEvent('Button_auth');
                                             GoRouter.of(context)
                                                 .prepareAuthEvent();
                                             final user = await authManager
@@ -363,6 +378,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                             if (user == null) {
                                               return;
                                             }
+                                            logFirebaseEvent(
+                                                'Button_navigate_to');
 
                                             context.pushNamedAuth(
                                               'HomePage',
@@ -413,6 +430,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         ),
                                         FFButtonWidget(
                                           onPressed: () async {
+                                            logFirebaseEvent(
+                                                'LOGIN_PAGE_PAGE__BTN_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Button_navigate_to');
+
                                             context.pushNamed('PhoneLoginPage');
                                           },
                                           text: '',
@@ -726,6 +748,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         0.0, 24.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
+                                        logFirebaseEvent(
+                                            'LOGIN_PAGE_PAGE_Submit_ON_TAP');
+                                        logFirebaseEvent('Submit_auth');
                                         GoRouter.of(context).prepareAuthEvent();
                                         if (_model.passwordSignUpController
                                                 .text !=
@@ -753,12 +778,16 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           return;
                                         }
 
+                                        logFirebaseEvent('Submit_auth');
                                         await authManager
                                             .sendEmailVerification();
+                                        logFirebaseEvent('Submit_auth');
                                         GoRouter.of(context).prepareAuthEvent();
                                         await authManager.signOut();
                                         GoRouter.of(context)
                                             .clearRedirectLocation();
+
+                                        logFirebaseEvent('Submit_navigate_to');
 
                                         context.pushNamedAuth(
                                             'HomePage', context.mounted);

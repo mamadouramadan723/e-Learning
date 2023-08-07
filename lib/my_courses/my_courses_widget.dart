@@ -30,6 +30,8 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MyCoursesModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'MyCourses'});
   }
 
   @override
@@ -74,6 +76,8 @@ class _MyCoursesWidgetState extends State<MyCoursesWidget> {
               size: 24.0,
             ),
             onPressed: () async {
+              logFirebaseEvent('MY_COURSES_PAGE_menu_ICN_ON_TAP');
+              logFirebaseEvent('IconButton_drawer');
               scaffoldKey.currentState!.openDrawer();
             },
           ),

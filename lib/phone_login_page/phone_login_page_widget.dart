@@ -25,6 +25,8 @@ class _PhoneLoginPageWidgetState extends State<PhoneLoginPageWidget> {
     super.initState();
     _model = createModel(context, () => PhoneLoginPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'PhoneLoginPage'});
     _model.phoneNumberController ??= TextEditingController();
     authManager.handlePhoneAuthStateChanges(context);
   }
@@ -111,6 +113,8 @@ class _PhoneLoginPageWidgetState extends State<PhoneLoginPageWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
+                  logFirebaseEvent('PHONE_LOGIN_PAGE_PAGE_SendCode_ON_TAP');
+                  logFirebaseEvent('SendCode_auth');
                   final phoneNumberVal = _model.phoneNumberController.text;
                   if (phoneNumberVal == null ||
                       phoneNumberVal.isEmpty ||
